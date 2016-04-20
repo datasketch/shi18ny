@@ -1,0 +1,4 @@
+common:
+  language: Language
+ui:
+  download: Download
