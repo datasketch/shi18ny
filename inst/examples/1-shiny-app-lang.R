@@ -1,8 +1,6 @@
+library(shiny)
 library(shi18ny)
-
-
-locales
-
+library(shinyjs)
 
 ui <- fluidPage(
   useShinyjs(),
@@ -11,7 +9,8 @@ ui <- fluidPage(
       langSelectorInput("lang")
     ),
     mainPanel(
-      verbatimTextOutput("debug")
+      verbatimTextOutput("debug"),
+      uiOutput("results")
     )
   )
 )
@@ -22,11 +21,21 @@ server <- function(input, output, session) {
     availableLangs = c("es","en")
   )
 
-  currentLocale <- callModule(langSelector, "lang", showSelector=TRUE)
+  currentLocale <- callModule(langSelector,"lang", i18n = i18n, showSelector=TRUE)
 
   output$debug <- renderPrint({
-    c(i_("common.language",currentLocale()),currentLocale())
+    c("Selected Lang",currentLocale(),
+      i_("common.language",currentLocale()),
+      i_("common.download",currentLocale()),
+      i_("myslang.hi"),currentLocale())
   })
+
+  output$results <- renderUI({
+    h1(i_("myslang.hi",currentLocale()))
+    h1(i_("common.language",currentLocale()))
+  })
+
 }
+
 shinyApp(ui, server)
 

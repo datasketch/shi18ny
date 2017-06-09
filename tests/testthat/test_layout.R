@@ -32,4 +32,19 @@ test_that("i18n Config",{
   i18n <- i18nLoad(opts)
   i18n <- i18nLoad()
 
+
+
+  ###
+
+  l <- i18nLoad()$en
+  localeString <- "common.language"
+  strs <- strsplit(localeString,".",fixed = TRUE)[[1]]
+  selectInList(l,strs)
+
+
+
+  i_("common.language", "en", i18n = NULL)
+
+
+
 })

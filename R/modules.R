@@ -15,7 +15,7 @@ langSelectorInput <- function(id,
 
 #' @export
 langSelector <- function(input,output,session, i18n = NULL,showSelector = TRUE){
-  if(is.null(i18n)) i18n <- i18nLoad()
+  i18n <- i18nLoad(i18n)
   config <- i18n$.config
   queryLang <- reactive({
     query <- parseQueryString(session$clientData$url_search)
