@@ -1,38 +1,43 @@
 #' @export
-setLangInput <- function(id) {
+langSelectorInput <- function(id,
+                              style = "basic",
+                              width = 80) {
   ns <- NS(id)
   div(
+    tags$style(src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css"),
     hidden(
       div(id=ns("langContainer"),
-        selectizeInput(ns("langInner"),label="",choices = NULL, selected = NULL)
+        selectInput(ns("langInner"),label="",choices = NULL, selected = NULL,width = width)
       )
     )
   )
 }
 
 #' @export
-setLang <- function(input,output,session, label = "label", userSelect = TRUE){
+langSelector <- function(input,output,session, i18n = NULL,showSelector = TRUE){
+  if(is.null(i18n)) i18n <- i18nLoad()
+  config <- i18n$.config
   queryLang <- reactive({
     query <- parseQueryString(session$clientData$url_search)
-    query$lang
+    query[[config$queryParameter]]
   })
   observe({
     selected <- queryLang()
-    message(userSelect)
-    if(!userSelect){
-      message(userSelect)
+    message(showSelector)
+    if(!showSelector){
+      message(showSelector)
       return(queryLang())
     }else{
       shinyjs::show("langContainer")
       updateSelectizeInput(session, 'langInner',
-                           label = label,
+                           label = "",
                            choices = c("en","es"), selected = selected,
                            server = TRUE)
     }
   })
   currentLocale <- reactive({
     selected <- queryLang()
-    if(!userSelect) return(selected)
+    if(!showSelector) return(selected)
     input$langInner
   })
   currentLocale

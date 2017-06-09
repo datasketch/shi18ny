@@ -1,22 +1,73 @@
 
 
 #' @export
-i18nInit <- function(currentLang = NULL,
-                     defaultLang = "en",
-                     localeDir = NULL){
-  currentLang <- currentLang %||% defaultLang
-  localeDir <- localeDir %||% "locale"
-  list(currentLang = currentLang,
-       defaultLang = defaultLang,
-       localeDir = localeDir)
+i18nConfig <- function(opts = NULL){
+  defaultOpts <- list(
+    defaultLang = "en",
+    availableLangs = availableLangs(),
+    localeDir = "locale",
+    fallbacks = list(
+      "es" = "pt",
+      "pt" = "es",
+      "fr" = "pt",
+      "de" = "nl",
+      "nl" = "de"),
+    queryParameter = "lang"
+  )
+  config <- defaultOpts
+  if(!is.null(opts))
+    config <- modifyList(defaultOpts, opts, keep.null = TRUE)
+  config
 }
 
 
 #' @export
-i_ <- function(localeString, currentLang = NULL, markdown = FALSE){
-  currentLang <- currentLang %||% "en"
+i18nLoad <- function(opts = NULL){
+  config <- i18nConfig(opts)
+  systemLocaleDir <- system.file("config/locale",package="shi18ny")
+  availableSystemLangs <- availableLangs()
+  localeDir <- config$localeDir
+  if(!dir.exists(localeDir)){
+    message("Using system locale only")
+    customAvailableLangs <- NULL
+    customLocale <- NULL
+  }else{
+    customAvailableLangs <- gsub(".yaml","",list.files(localeDir,pattern = ".yaml"))
+    if(!is.null(config$availableLangs)){
+      if(!all(customAvailableLangs %in% config$availableLangs))
+        stop("Requesting languages not in locale folder")
+    }
+    customLocale <- lapply(customAvailableLangs,function(lang){
+      dir <- file.path(localeDir,paste0(lang,".yaml"))
+      l <- yaml.load_file(dir)
+    })
+    names(customLocale) <- customAvailableLangs
+  }
+  locales <- lapply(availableSystemLangs,function(lang){
+    if(!all(customAvailableLangs %in% config$availableLangs))
+      warning("Requesting languages not in system locale folder")
+    #gsub(".yaml", "",list.files(localeDir))
+    #message(lang)
+    dir <- file.path(systemLocaleDir,paste0(lang,".yaml"))
+    l <- yaml.load_file(dir)
+    if(!is.null(customLocale)){
+      if(is.null(customLocale[[lang]])){
+        l <- c(l, customLocale[["en"]])
+      }else
+        l <- c(l, customLocale[[lang]])
+    }
+    l
+  })
+  names(locales) <- availableSystemLangs
+  i18n <- locales[config$availableLangs]
+  i18n$.config <- config
+  i18n
+}
+
+#' @export
+i_ <- function(localeString, lang = NULL, i18n, markdown = FALSE){
+  lang <- lang %||% "en"
   #localeString <- "common.download"
-  i18n <- i18nLoad(currentLang)
   strs <- strsplit(localeString,".",fixed = TRUE)[[1]]
   selectInList <- function(l,strs){
     str <- strs[1]
@@ -44,43 +95,7 @@ availableLangs <- function(localeDir = NULL){
   gsub(".yaml", "",list.files(localeDir))
 }
 
-#' @export
-i18nLoad <- function(currentLang = NULL, customLocaleDir = ""){
-  currentLang <- currentLang %||% "en"
-  localeDir <- system.file("config/locale",package="shi18ny")
-  availableLangs <- availableLangs()
 
-  if(!currentLang %in% availableLangs)
-    currentLang <- "en"
-
-  customLangs <- NULL
-  if(dir.exists(customLocaleDir)){
-    customAvailableLangs <- gsub(".yaml", "",list.files(customLocaleDir))
-    customLangs <- lapply(customAvailableLangs,function(lang){
-      #gsub(".yaml", "",list.files(localeDir))
-      dir <- file.path(customLocaleDir,paste0(lang,".yaml"))
-      l <- yaml.load_file(dir)
-    })
-    names(customLangs) <- customAvailableLangs
-  }
-  langs <- lapply(availableLangs,function(lang){
-    #gsub(".yaml", "",list.files(localeDir))
-    #message(lang)
-    dir <- file.path(localeDir,paste0(lang,".yaml"))
-    l <- yaml.load_file(dir)
-    if(!is.null(customLangs)){
-      if(is.null(customLangs[[lang]])){
-        l$custom <- customLangs[["en"]]
-      }else
-        l$custom <- customLangs[[lang]]
-    }
-    l
-  })
-  names(langs) <- availableLangs
-  langs
-  i18n <- langs[[currentLang]]
-  i18n
-}
 
 
 

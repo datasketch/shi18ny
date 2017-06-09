@@ -1,4 +1,11 @@
 common:
   language: Language
+  welcome: Welcome
+  hello: Hello
+  world: World
+  spanish: Spanish
+  english: English
+  german: German
+  portuguese: Portuguese
 ui:
   download: Download
