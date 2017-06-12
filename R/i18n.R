@@ -43,7 +43,6 @@ i18nLoad <- function(opts = NULL){
     })
     names(customLocale) <- customAvailableLangs
   }
-  message(availableSystemLangs)
   locales <- lapply(availableSystemLangs,function(lang){
     if(!all(customAvailableLangs %in% config$availableLangs))
       warning("Requesting languages not in system locale folder")
@@ -71,7 +70,7 @@ i_ <- function(localeString, lang = NULL, i18n = NULL, markdown = FALSE){
   lang <- lang %||% "en"
   strs <- strsplit(localeString,".",fixed = TRUE)[[1]]
   i18nLang <- i18n[[lang]]
-  s <- selectInList(i18nLang,strs) %||% ""
+  s <- selectInList(i18nLang,strs) %||% paste0(localeString,collapse = ".")
   if(markdown)
     s <- markdownToHTML(text=s,fragment.only = TRUE)
   s
@@ -91,7 +90,7 @@ selectInList <- function(l,strs){
   ll <- NULL
   try({ll <- l[[str]]},silent=TRUE)
   #message(str(ll))
-  if(is.null(ll)) return()
+  if(is.null(ll)) return(strs)
   if(is.list(ll)){
     strs <- strs[-1]
     return(selectInList(ll,strs))

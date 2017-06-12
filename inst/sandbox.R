@@ -14,8 +14,8 @@ library(shi18ny)
 
 i18nLoad("en")
 
-i_("common.language",currentLang = "en")
-i_("common.language",currentLang = "es")
+i_("sys.language",lang = "en")
+i_("sys.fds",lang = "es")
 
 
 

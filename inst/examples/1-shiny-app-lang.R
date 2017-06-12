@@ -25,14 +25,16 @@ server <- function(input, output, session) {
 
   output$debug <- renderPrint({
     c("Selected Lang",currentLocale(),
-      i_("common.language",currentLocale()),
-      i_("common.download",currentLocale()),
+      i_("sys.language",currentLocale()),
+      i_("sys.download",currentLocale()),
       i_("myslang.hi"),currentLocale())
   })
 
   output$results <- renderUI({
-    h1(i_("myslang.hi",currentLocale()))
-    h1(i_("common.language",currentLocale()))
+    list(
+    h1(i_("myslang.hi",currentLocale())),
+    h1(i_("sys.language",currentLocale()))
+    )
   })
 
 }
