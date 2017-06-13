@@ -21,19 +21,19 @@ server <- function(input, output, session) {
     availableLangs = c("es","en")
   )
 
-  currentLocale <- callModule(langSelector,"lang", i18n = i18n, showSelector=TRUE)
+  lang <- callModule(langSelector,"lang", i18n = i18n, showSelector=TRUE)
 
   output$debug <- renderPrint({
-    c("Selected Lang",currentLocale(),
-      i_("sys.language",currentLocale()),
-      i_("sys.download",currentLocale()),
-      i_("myslang.hi"),currentLocale())
+    # c("Selected Lang",lang(),
+    #   i_("sys.language",currentLocale()),
+    #   i_("sys.download",currentLocale()),
+    #   i_("myslang.hi"))
   })
 
   output$results <- renderUI({
     list(
-    h1(i_("myslang.hi",currentLocale())),
-    h1(i_("sys.language",currentLocale()))
+    h1(i_("myslang.hi",lang())),
+    h1(i_("sys.language",lang()))
     )
   })
 

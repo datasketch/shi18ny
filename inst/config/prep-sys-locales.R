@@ -7,7 +7,9 @@ langs <- names(x)[-1]
 map(langs, function(lang){
   l <- x[[lang]] %>% as.list() %>% set_names(x$id)
   l <- list(sys = l)
-  writeLines(yaml::as.yaml(l),paste0("inst/config/locale/",lang,".yaml"))
+  yaml <- paste0(yaml::as.yaml(l),"\n")
+  filename <- paste0("inst/config/locale/",lang,".yaml")
+  writeLines(yaml,filename)
 })
 
 

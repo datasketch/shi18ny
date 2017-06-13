@@ -22,7 +22,7 @@ langSelector <- function(input,output,session, i18n = NULL,showSelector = TRUE){
     query[[config$queryParameter]]
   })
   observe({
-    selected <- queryLang()
+    selected <- queryLang() %||% config$defaultLang
     message(showSelector)
     if(!showSelector){
       message(showSelector)

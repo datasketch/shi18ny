@@ -43,8 +43,9 @@ test_that("i18n Config",{
 
 
 
-  i_("common.language", "en", i18n = NULL)
+  i_("sys.language", "en", i18n = NULL)
+  i_("sys.language", "en", i18n = NULL)
 
-
+  i_("myslang.hi","es",i18n)
 
 })
