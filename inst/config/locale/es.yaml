@@ -225,6 +225,7 @@ sys:
   coordinate: coordinar
   copynoun: copia
   copyverb: copiar
+  copypaste: copiar y pegar
   copyleft: derecho de copia, copyleft
   copyright: derecho de autor, copyright
   correct: corregir
@@ -252,6 +253,7 @@ sys:
   daemon: demonio
   damage: daño
   data: datos
+  dataUpload: carga de datos
   database: base de datos
   debug: quitar el error
   debugger: que quita el error
@@ -386,6 +388,7 @@ sys:
   field: campo
   figure: cifra
   file: archivo
+  fileUpload: Carga de archivo
   fill: rellenar
   filter: filtro
   find: encontrar
@@ -808,6 +811,7 @@ sys:
   segment: segmento
   segmentation: segmentación
   select: seleccionar
+  selectColumn: seleccionar columna
   selection: selección
   semantic: semántico
   send: enviar

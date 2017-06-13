@@ -223,8 +223,9 @@ sys:
   cookie: cookie
   cooperative: cooperative
   coordinate: coordinate
-  copynoun: copy (noun)
-  copyverb: copy (verb)
+  copynoun: copy
+  copyverb: copy
+  copypaste: copy and paste
   copyleft: copy left
   copyright: copy right
   correct: correct
@@ -252,6 +253,7 @@ sys:
   daemon: daemon
   damage: damage
   data: data
+  dataUpload: data upload
   database: database
   debug: debug
   debugger: debugger
@@ -386,6 +388,7 @@ sys:
   field: field
   figure: figure
   file: file
+  fileUpload: file upload
   fill: fill
   filter: filter
   find: find
@@ -808,6 +811,7 @@ sys:
   segment: segment
   segmentation: segmentation
   select: select
+  selectColumn: select column
   selection: selection
   semantic: semantic
   send: send

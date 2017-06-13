@@ -225,6 +225,7 @@ sys:
   coordinate: .na.character
   copynoun: .na.character
   copyverb: .na.character
+  copypaste: .na.character
   copyleft: .na.character
   copyright: .na.character
   correct: .na.character
@@ -252,6 +253,7 @@ sys:
   daemon: .na.character
   damage: .na.character
   data: .na.character
+  dataUpload: .na.character
   database: .na.character
   debug: .na.character
   debugger: .na.character
@@ -386,6 +388,7 @@ sys:
   field: .na.character
   figure: .na.character
   file: .na.character
+  fileUpload: .na.character
   fill: .na.character
   filter: .na.character
   find: .na.character
@@ -808,6 +811,7 @@ sys:
   segment: .na.character
   segmentation: .na.character
   select: .na.character
+  selectColumn: .na.character
   selection: .na.character
   semantic: .na.character
   send: .na.character

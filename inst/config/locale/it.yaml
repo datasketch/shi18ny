@@ -225,6 +225,7 @@ sys:
   coordinate: coordinata
   copynoun: copia
   copyverb: copiare
+  copypaste: .na.character
   copyleft: copyleft
   copyright: diritto d'autore
   correct: corretto
@@ -252,6 +253,7 @@ sys:
   daemon: demone
   damage: danno
   data: dati
+  dataUpload: .na.character
   database: database
   debug: debug
   debugger: debugger
@@ -386,6 +388,7 @@ sys:
   field: campo
   figure: immaginare
   file: file
+  fileUpload: .na.character
   fill: riempire
   filter: filtro
   find: trovare
@@ -808,6 +811,7 @@ sys:
   segment: segmento
   segmentation: segmentazione
   select: selezionare
+  selectColumn: .na.character
   selection: selezione
   semantic: semantico
   send: invia

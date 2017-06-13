@@ -223,8 +223,9 @@ sys:
   cookie: Cookie
   cooperative: kooperativ
   coordinate: koordinieren
-  copynoun: Kopie (Hauptwort)
-  copyverb: kopieren (Verb)
+  copynoun: Kopie
+  copyverb: kopieren
+  copypaste: Kopieren und Einfügen
   copyleft: Recht zur Weitergabe
   copyright: Urheberrecht
   correct: korrigieren
@@ -252,6 +253,7 @@ sys:
   daemon: Hintergrund-Dienst
   damage: Schaden
   data: Daten
+  dataUpload: Daten hochladen
   database: Datenbank
   debug: Fehler beseitigen
   debugger: Debugger
@@ -386,6 +388,7 @@ sys:
   field: Feld
   figure: Abbildung
   file: Datei
+  fileUpload: Datei Hochladen
   fill: ausfüllen
   filter: Filter
   find: suchen
@@ -808,6 +811,7 @@ sys:
   segment: Strecke
   segmentation: Segmentierung
   select: auswählen
+  selectColumn: .na.character
   selection: Auswahl
   semantic: Semantik
   send: senden

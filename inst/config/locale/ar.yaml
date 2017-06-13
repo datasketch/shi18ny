@@ -225,6 +225,7 @@ sys:
   coordinate: نسق
   copynoun: نسخة (اسم)
   copyverb: انسخ (فعل)
+  copypaste: .na.character
   copyleft: نسخ إلى اليسار
   copyright: نسخ إلى اليمين
   correct: صحح
@@ -252,6 +253,7 @@ sys:
   daemon: عفريت
   damage: ضرر
   data: بيانات
+  dataUpload: .na.character
   database: قاعدة بيانات
   debug: أزل الخلل
   debugger: منقح
@@ -386,6 +388,7 @@ sys:
   field: حقل
   figure: شكل
   file: ملف
+  fileUpload: .na.character
   fill: إملأ
   filter: مرشح
   find: اوجد
@@ -808,6 +811,7 @@ sys:
   segment: قطعة
   segmentation: تقسيم
   select: اختر
+  selectColumn: .na.character
   selection: تحديد
   semantic: دلالة
   send: ارسل
