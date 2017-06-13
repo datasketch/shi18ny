@@ -1,17 +1,28 @@
 #' @export
 langSelectorInput <- function(id,
-                              style = "basic",
+                              position = "right",
                               width = 80) {
   ns <- NS(id)
+  cls <- ""
+  style <- ""
+  if(position == "right")
+    cls <- "pull-right"
+  if(position == "fixed"){
+    cls <- "lang-fixed"
+    style <- "position: fixed;top:0px;right: 10px;z-index: 1001;"
+  }
   div(
     tags$style(src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css"),
     hidden(
-      div(id=ns("langContainer"),
-        selectInput(ns("langInner"),label="",choices = NULL, selected = NULL,width = width)
+      tags$div(id=ns("langContainer"), class = cls,
+               style= style,
+               selectInput(ns("langInner"),label="",choices = NULL, selected = NULL,width = width)
       )
     )
   )
 }
+
+absolutePanel()
 
 #' @export
 langSelector <- function(input,output,session, i18n = NULL,showSelector = TRUE){

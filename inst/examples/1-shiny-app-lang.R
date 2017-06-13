@@ -6,7 +6,7 @@ ui <- fluidPage(
   useShinyjs(),
   sidebarLayout(
     sidebarPanel(
-      langSelectorInput("lang")
+      langSelectorInput("lang", position = "fixed")
     ),
     mainPanel(
       verbatimTextOutput("debug"),
@@ -20,9 +20,7 @@ server <- function(input, output, session) {
     defaultLang = "en",
     availableLangs = c("es","en")
   )
-
   lang <- callModule(langSelector,"lang", i18n = i18n, showSelector=TRUE)
-
   output$debug <- renderPrint({
     # c("Selected Lang",lang(),
     #   i_("sys.language",currentLocale()),
