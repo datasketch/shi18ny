@@ -225,7 +225,7 @@ sys:
   coordinate: نسق
   copynoun: نسخة (اسم)
   copyverb: انسخ (فعل)
-  copypaste: .na.character
+  copyPaste: .na.character
   copyleft: نسخ إلى اليسار
   copyright: نسخ إلى اليمين
   correct: صحح

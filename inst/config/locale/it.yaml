@@ -225,7 +225,7 @@ sys:
   coordinate: coordinata
   copynoun: copia
   copyverb: copiare
-  copypaste: .na.character
+  copyPaste: .na.character
   copyleft: copyleft
   copyright: diritto d'autore
   correct: corretto

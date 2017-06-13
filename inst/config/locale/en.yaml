@@ -225,7 +225,7 @@ sys:
   coordinate: coordinate
   copynoun: copy
   copyverb: copy
-  copypaste: copy and paste
+  copyPaste: copy and paste
   copyleft: copy left
   copyright: copy right
   correct: correct
