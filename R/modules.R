@@ -22,8 +22,6 @@ langSelectorInput <- function(id,
   )
 }
 
-absolutePanel()
-
 #' @export
 langSelector <- function(input,output,session, i18n = NULL,showSelector = TRUE){
   i18n <- i18nLoad(i18n)
