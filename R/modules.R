@@ -30,7 +30,8 @@ langSelector <- function(input,output,session, i18n = NULL,showSelector = TRUE){
     query <- parseQueryString(session$clientData$url_search)
     query[[config$queryParameter]]
   })
-  observe({
+  # observe({
+  initLocale <- reactive({
     selected <- queryLang() %||% config$defaultLang
     message("selected2 ", selected,"config", config$defaultLang)
     message(showSelector)
@@ -44,14 +45,19 @@ langSelector <- function(input,output,session, i18n = NULL,showSelector = TRUE){
                            choices = config$availableLangs, selected = selected,
                            server = TRUE)
     }
-    return(reactive(selected))
-  })
-  currentLocale <- reactive({
+    # return(reactive(selected))
     #selected <- queryLang()
-    # message("selected", selected, " config ", config$defaultLang)
     # if(is.null(selected)) return(config$defaultLang)
-    if(!showSelector) return(selected)
+    # if(!showSelector) return(selected)
+    message("selected3", selected, " config ", config$defaultLang)
+    selected
+  })
+
+  currentLocale <- reactive({
+    message("initLocale", initLocale())
+    message("input", input$langInner)
     input$langInner
+
   })
   currentLocale
 }
