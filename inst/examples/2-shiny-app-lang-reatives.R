@@ -21,7 +21,7 @@ server <- function(input, output, session) {
     defaultLang = "en",
     availableLangs = c("es","de","en")
   )
-  lang <- callModule(langSelector,"lang", i18n = i18n, showSelector=TRUE)
+  lang <- callModule(langSelector,"lang", i18n = i18n, showSelector=FALSE)
   output$debug <- renderPrint({
     c("Selected Lang",lang())
   })

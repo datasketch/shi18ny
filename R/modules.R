@@ -35,16 +35,16 @@ langSelector <- function(input,output,session, i18n = NULL,showSelector = TRUE){
     selected <- queryLang() %||% config$defaultLang
     message("selected2 ", selected,"config", config$defaultLang)
     message(showSelector)
-    if(!showSelector){
-      message(showSelector)
-      return(queryLang())
-    }else{
+    if(showSelector){
+    #   message(showSelector)
+    #   return(queryLang())
+    # }else{
       shinyjs::show("langContainer")
+    }
       updateSelectizeInput(session, 'langInner',
                            label = "",
                            choices = config$availableLangs, selected = selected,
                            server = TRUE)
-    }
     # return(reactive(selected))
     #selected <- queryLang()
     # if(is.null(selected)) return(config$defaultLang)
@@ -55,9 +55,10 @@ langSelector <- function(input,output,session, i18n = NULL,showSelector = TRUE){
 
   currentLocale <- reactive({
     message("initLocale", initLocale())
-    message("input", input$langInner)
+    message("input3", input$langInner, " is null ",is.null(input$langInner))
+    # if(is.null(input$langInner))
+    #   return(initLocale())
     input$langInner
-
   })
   currentLocale
 }
