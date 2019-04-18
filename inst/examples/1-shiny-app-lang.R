@@ -3,15 +3,17 @@ library(shi18ny)
 library(shinyjs)
 
 ui <- fluidPage(
-  useShinyjs(),
-  sidebarLayout(
-    sidebarPanel(
-      langSelectorInput("lang", position = "fixed")
-    ),
-    mainPanel(
-      verbatimTextOutput("debug"),
-      uiOutput("results")
-    )
+  useShi18ny(),
+  column(3,
+         langSelectorInput("lang", position = "fixed"),
+         verbatimTextOutput("debug")
+  ),
+  column(9,
+         h2("Hello, this is always in english"),
+         h3("Try reloading the app with the url parameter ?lang=es"),
+         h3(ui_("this_is_current_lang")),
+         h4("Check update UI examples to change this text from the UI"),
+         uiOutput("results")
   )
 )
 
@@ -22,16 +24,21 @@ server <- function(input, output, session) {
   )
   lang <- callModule(langSelector,"lang", i18n = i18n, showSelector=TRUE)
   output$debug <- renderPrint({
-    # c("Selected Lang",lang(),
-    #   i_("sys.language",currentLocale()),
-    #   i_("sys.download",currentLocale()),
-    #   i_("myslang.hi"))
+    cat(c("Selected Lang: ",lang(),"\nReactive info: \n",
+      i_("shi18ny.language",lang()),
+      i_("shi18ny.download",lang()),
+      i_("myslang.hi"))
+    )
   })
 
   output$results <- renderUI({
     list(
-    h1(i_("myslang.hi",lang())),
-    h1(i_("sys.language",lang()))
+      br(),
+      hr(),
+      h2(i_("this_is_reactive",lang())),
+      h1(i_("myslang.hi",lang())),
+      h2(i_("shi18ny.language",lang()),":",
+         span(lang()))
     )
   })
 

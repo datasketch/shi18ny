@@ -1,6 +1,8 @@
+this_is_reactive: Esto es reactivo, viene del "server"
+this_is_current_lang: Esto está en español
 myslang:
   yo: Oe
   hi: Quiubo
-  surprise: Mierda
+  surprise: ¡Mierda!
   plot: Gráfico
 navbar: Navegación

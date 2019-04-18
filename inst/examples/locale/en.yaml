@@ -1,6 +1,8 @@
+this_is_reactive: This is reactive, coming from "server"
+this_is_current_lang: This is actually in english
 myslang:
   yo: Yo
-  hi: zup
-  surprise: wtf
+  hi: Zup
+  surprise: WTF!
   plot: Chart
 navbar: Navigation
