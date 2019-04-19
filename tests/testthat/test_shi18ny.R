@@ -18,6 +18,9 @@ test_that("i18n Config",{
   expect_equal(i_(str,lang = "es"), "idioma")
   expect_equal(i_(str,lang = "pt"), "língua")
   expect_equal(i_(str,lang = "de"), "Sprache")
+  expect_equal(i_(str,lang = "fr"), "la langue")
+  expect_equal(i_(str,lang = "ru"), "язык")
+
 
   l <- i18nLoad()$en
   localeString <- "common.language"
