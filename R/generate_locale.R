@@ -19,7 +19,7 @@ generate_locale <- function(src_path = ".", files = NULL, i18n = NULL, langs = N
     keys <- undotList(keywords)
     locale_file <- file.path(dir, paste0(lang,".yaml"))
     if(file.exists(locale_file)){
-      currentLocale <- yaml.load_file(locale_file)
+      currentLocale <- yaml::yaml.load_file(locale_file)
       keys <- modifyList(keys, currentLocale)
     }
     yaml::write_yaml(keys, locale_file)

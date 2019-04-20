@@ -5,7 +5,7 @@ library(shinyjs)
 ui <- fluidPage(
   useShi18ny(),
   column(3,
-         langSelectorInput("lang", position = "fixed"),
+         langSelectorInput("lang", position = "right"),
          verbatimTextOutput("debug")
   ),
   column(9,
