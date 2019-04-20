@@ -20,3 +20,7 @@ vignettes/*.pdf
 
 #*.Rproj
 .Rproj.user
+
+## Local locale for testing
+locale/
+locale/*

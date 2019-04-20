@@ -50,8 +50,8 @@ server <- function(input, output, session) {
     i18nClasses <- input$shi18ny_ui_classes
 
      c("Selected Lang",lang(),
-       i_("sys.language",lang()),
-       i_("sys.download",lang()),
+       i_("shi18ny.language",lang()),
+       i_("shi18ny.download",lang()),
        i_("myslang.hi"))
        i_(gsub("i18n ","",i18nClasses))
   })
@@ -59,7 +59,7 @@ server <- function(input, output, session) {
   output$results <- renderUI({
     list(
       h1(i_("myslang.hi",lang())),
-      h1(i_("sys.language",lang()))
+      h1(i_("shi18ny.language",lang()))
     )
   })
 

@@ -11,7 +11,7 @@ test_that("i18n Config",{
   i18n <- i18nLoad()
 
   expect_equal(names(i18n), c(availableLangs(), ".config"))
-  expect_equal(names(i18n$en), "shi18ny")
+  expect_true("shi18ny" %in% names(i18n$en))
 
   str <- "shi18ny.language"
   expect_equal(i_(str,lang = "en"), "language")
