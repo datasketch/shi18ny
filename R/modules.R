@@ -54,6 +54,7 @@ langSelector <- function(input,output,session, i18n = NULL,showSelector = TRUE){
   })
 
   currentLocale <- reactive({
+    initLocale()
     #message("initLocale", initLocale())
     #message("input3", input$langInner, " is null ",is.null(input$langInner))
     # if(is.null(input$langInner))
