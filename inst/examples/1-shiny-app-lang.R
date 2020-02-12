@@ -1,14 +1,14 @@
 library(shiny)
 library(shi18ny)
-library(shinyjs)
 
 ui <- fluidPage(
   useShi18ny(),
-  column(3,
-         langSelectorInput("lang", position = "right"),
+  column(4,
+         langSelectorInput("lang", position = "fixed"),
+         br(),
          verbatimTextOutput("debug")
   ),
-  column(9,
+  column(8,
          h2("Hello, this is always in english"),
          h3("Try reloading the app with the url parameter ?lang=es"),
          h3(ui_("this_is_current_lang")),
@@ -24,10 +24,10 @@ server <- function(input, output, session) {
   )
   lang <- callModule(langSelector,"lang", i18n = i18n, showSelector=TRUE)
   output$debug <- renderPrint({
-    cat(c("Selected Lang: ",lang(),"\nReactive info: \n",
+    cat(c("Selected Lang: ",lang(),"\nReactive translations: \n",
       i_("shi18ny.language",lang()),
       i_("shi18ny.download",lang()),
-      i_("myslang.hi"))
+      i_("myslang.hi"), lang())
     )
   })
 

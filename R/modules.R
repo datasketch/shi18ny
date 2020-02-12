@@ -1,7 +1,7 @@
 #' @export
 langSelectorInput <- function(id,
                               position = "right",
-                              width = 80) {
+                              width = 40) {
   ns <- NS(id)
   cls <- ""
   style <- ""
@@ -12,8 +12,7 @@ langSelectorInput <- function(id,
     style <- "position: fixed;top:0px;right: 10px;z-index: 1001;"
   }
   div(
-    tags$style(src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css"),
-    hidden(
+    shinyjs::hidden(
       tags$div(id=ns("langContainer"), class = cls,
                style= style,
                selectInput(ns("langInner"),label="",choices = NULL, selected = NULL,width = width)
@@ -23,7 +22,8 @@ langSelectorInput <- function(id,
 }
 
 #' @export
-langSelector <- function(input,output,session, i18n = NULL,showSelector = TRUE){
+langSelector <- function(input, output, session,
+                         i18n = NULL, showSelector = TRUE){
   i18n <- i18nLoad(i18n)
   config <- i18n$.config
   queryLang <- reactive({
@@ -63,7 +63,5 @@ langSelector <- function(input,output,session, i18n = NULL,showSelector = TRUE){
   })
   currentLocale
 }
-
-
 
 

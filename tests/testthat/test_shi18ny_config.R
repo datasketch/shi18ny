@@ -2,8 +2,6 @@ context("config")
 
 test_that("i18n Config",{
 
-
-
   # Default options
   opts <- NULL
   config <- i18nConfig()
@@ -43,25 +41,7 @@ test_that("i18n Config",{
   )
   config <- i18nConfig(opts)
   expect_error(i18nLoad(opts),"Requested languages not in locale folder")
-
-  # Custom translations
-
-  opts <- list(
-    localeDir = localeDir,
-    defaultLang = "es",
-    fallbacks = list("es" = "en")
-  )
-  config <- i18nConfig(opts)
-  i18n <- i18nLoad(opts)
-
-  expect_equal(i_("myslang.hi","es",i18n), "Quiubo")
-  expect_equal(i_("myslang.hi","en",i18n), "Zup")
-
-  expect_equal(i_("myslang.surprise","es",i18n), "¡Mierda!")
-  expect_equal(i_("myslang.surprise","en",i18n), "WTF!")
-
-
-
-
-
 })
+
+
+
