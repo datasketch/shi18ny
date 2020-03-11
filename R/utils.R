@@ -62,3 +62,11 @@ undotList <- function(x){
 is.empty <- function (x){
   !as.logical(length(x))
 }
+
+# Borrowed from package: tools
+file_path_sans_ext <- function (x, compression = FALSE)
+{
+  if (compression)
+    x <- sub("[.](gz|bz2|xz)$", "", x)
+  sub("([^.]+)\\.[[:alnum:]]+$", "\\1", x)
+}

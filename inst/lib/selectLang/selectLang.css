@@ -1,0 +1,95 @@
+/* CSS img btn
+
+.imageStyle {
+ width: 35px;
+ height: 35px;
+}
+
+.buttonStyle {
+ cursor: pointer;
+ padding: 0;
+ background: transparent;
+ position: relative;
+ width: 40px;
+ height: 40px;
+ vertical-align: middle;
+ text-align: center;
+ align-content: center;
+ box-shadow: none;
+ border: 0px;
+ margin: 3px 3px 3px 3px;
+ outline: none;
+}
+
+.buttonStyle.active_btn, .buttonStyle:focus {
+ border: 0px;
+}
+
+
+
+.imageStyle.active_btn {
+	filter: brightness(0) invert(0.7);
+	transition: all 0.3s cubic-bezier(0.680, -0.550, 0.265, 1.550);
+}
+
+*/
+
+
+.buttons-group {
+	background-color: transparent;
+	display: grid;
+	grid-gap: 20px;
+	grid-template-columns: repeat(auto-fill, 40px);
+	padding: 15px 0;
+}
+
+
+.buttons-group .buttonStyle {
+	align-items: center;
+	background-color: transparent;
+	border: none !important;
+	box-shadow: none !important;
+	cursor: pointer !important;
+	display: flex !important;
+	height: 40px;
+	justify-content: center !important;
+	outline: 0;
+	position: relative !important;
+	text-align: center !important;
+	width: 40px;
+}
+
+
+
+.buttons-group .buttonStyle:before {
+	background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMi42NiAxMi42NiI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNiNzBmN2Y7fS5jbHMtMntmaWxsOiNmZmY7fTwvc3R5bGU+PC9kZWZzPjx0aXRsZT5DaGVja2VkPC90aXRsZT48ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIj48ZyBpZD0iTGF5ZXJfMS0yIiBkYXRhLW5hbWU9IkxheWVyIDEiPjxjaXJjbGUgY2xhc3M9ImNscy0xIiBjeD0iNi4zMyIgY3k9IjYuMzMiIHI9IjYuMzMiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik01LjM4LDkuNTZhLjQ5LjQ5LDAsMCwxLS4yNy0uMTNMMy4yNCw3LjQ5YS40NC40NCwwLDAsMSwwLS42My40NS40NSwwLDAsMSwuNjMsMEw1LjM5LDguNDMsOC43NywzLjk0YS40NC40NCwwLDAsMSwuNzEuNTNMNS43OSw5LjM5YS40Ny40NywwLDAsMS0uMzMuMTdaIi8+PC9nPjwvZz48L3N2Zz4=) !important;
+	content: '';
+	height: 10px;
+	position: absolute !important;
+	right: 0;
+	top: 0;
+	transform: scale(0);
+	transition: all 0.3s cubic-bezier(0.680, -0.550, 0.265, 1.550) !important;
+	width: 10px !important;
+}
+
+
+.buttons-group .buttonStyle .imageStyle {
+	width: 35px;
+	filter: brightness(0) invert(0.7);
+	transition: all 0.3s cubic-bezier(0.680, -0.550, 0.265, 1.550);
+}
+
+
+.buttons-group .buttonStyle.active_btn:before {
+	transform: scale(1) !important;
+}
+
+.buttonStyle.active_btn .imageStyle{
+ filter: brightness(1) invert(0) !important;
+}
+
+
+.buttons-group .buttonStyle.active_btn:before {
+	transform: scale(1) !important;
+}

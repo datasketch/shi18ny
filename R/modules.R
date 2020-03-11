@@ -15,7 +15,7 @@ langSelectorInput <- function(id,
     shinyjs::hidden(
       tags$div(id=ns("langContainer"), class = cls,
                style= style,
-               selectInput(ns("langInner"),label="",choices = NULL, selected = NULL,width = width)
+               selectLangInput(ns("langInner"), label="", choices = NULL, selected = 1, width = width)
       )
     )
   )
@@ -41,10 +41,10 @@ langSelector <- function(input, output, session,
     # }else{
       shinyjs::show("langContainer")
     }
-      updateSelectizeInput(session, 'langInner',
+      updateSelectLangInput(session, 'langInner',
                            label = "",
-                           choices = config$availableLangs, selected = selected,
-                           server = TRUE)
+                           choices = config$availableLangs,
+                           selected = selected)
     # return(reactive(selected))
     #selected <- queryLang()
     # if(is.null(selected)) return(config$defaultLang)
