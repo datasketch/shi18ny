@@ -59,7 +59,7 @@ uiLangUpdate <- function(classes, lang){
 #' @export
 availableLangs <- function(localeDir = NULL){
   x <- read.csv(system.file("ui-translations.csv", package = "shi18ny"), stringsAsFactors = FALSE)
-  names(x)[-1]
+  sort(names(x)[-1])
 }
 
 

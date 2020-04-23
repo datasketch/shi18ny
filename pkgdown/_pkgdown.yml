@@ -1,0 +1,6 @@
+destination: docs
+template:
+  params:
+    bootswatch: simplex
+    ganalytics: UA-164320300-1
+

@@ -1,15 +1,27 @@
 Package: shi18ny
 Title: Tools for shiny apps internationalization
-Version: 0.0.1
-Authors@R: person("Juan Pablo", "Marin Diaz", email = "jpmarindiaz@gmail.com", role = c("aut", "cre"))
-Description: Tools for shiny apps internationalization
+Version: 0.1.0
+Authors@R: 
+    person(given = "Juan Pablo",
+           family = "Marin Diaz",
+           role = c("aut", "cre"),
+           email = "jpmarindiaz@gmail.com")
+Maintainer: Juan Pablo Marin Diaz <jpmarindiaz@gmail.com>
+Description: Create shiny apps in multiples languages. You can include
+  common words in multiple languages or provide your custom translations.
+URL: https://github.com/datasketch/shi18ny, https://shi18ny.datasketch.dev
+BugReports: https://github.com/datasketch/shi18ny/issues
+License: MIT + file LICENSE
+LazyData: true
 Depends:
     R (>= 3.0.0),
-    yaml
 Imports:
-    shiny (>= 0.11.1),
-    shinyjs
-License: MIT
-LazyData: true
-RoxygenNote: 6.1.1
+    shiny,
+    shinyjs,
+    yaml
 Encoding: UTF-8
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 7.1.0
