@@ -4,5 +4,8 @@ pkgdown_sha: ~
 articles:
   contributing: contributing.html
   getting-started: getting-started.html
-last_built: 2020-04-23T04:54Z
+last_built: 2020-04-23T06:13Z
+urls:
+  reference: https://shi18ny.datasketch.dev/reference
+  article: https://shi18ny.datasketch.dev/articles
 

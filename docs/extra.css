@@ -1,0 +1,50 @@
+
+/* Violeta #1b0d20*/
+/* Magenta #ce0978*/
+/*Yellow #ffd700*/
+/*Light Grey #edf2f7*/
+
+body {
+    color: #444444;
+    /*background-color: #edf2f7;*/
+}
+
+.navbar-default .navbar-link:hover {
+    color: #1b0d20;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #1b0d20;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #1b0d20;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    color: #ffffff;
+    background-color: #1b0d20;
+}
+
+a {
+	color: #ce0978;
+}
+
+a:hover, a:focus {
+    color: #1b0d20;
+}
+
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #1b0d20;
+}
+
+.btn-primary, .btn-primary:hover {
+    background-image: linear-gradient(#ce0978, #ce0978 6%, #ce0978);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe72510', endColorstr='#ffcb210e', GradientType=0);
+    border: 1px solid #ce0978;
+}
+

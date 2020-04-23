@@ -1,11 +1,13 @@
 Package: shi18ny
 Title: Tools for shiny apps internationalization
 Version: 0.1.0
-Authors@R: 
+Authors@R: c( 
     person(given = "Juan Pablo",
            family = "Marin Diaz",
            role = c("aut", "cre"),
-           email = "jpmarindiaz@gmail.com")
+           email = "jpmarindiaz@gmail.com"),
+    person("Datasketch", role = c("cph", "fnd"))
+    )
 Maintainer: Juan Pablo Marin Diaz <jpmarindiaz@gmail.com>
 Description: Create shiny apps in multiples languages. You can include
   common words in multiple languages or provide your custom translations.
