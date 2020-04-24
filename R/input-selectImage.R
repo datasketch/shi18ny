@@ -12,8 +12,7 @@
 #' @param placeholder HTML to render as placeholder, overrides selected param.
 #' @param width width in of input.
 #'
-#' Borrowed from the package shinyinvoer
-#'
+#' @export
 selectImageInput <- function(inputId, label, choices, images = NULL,
                              selected = 1,
                              placeholder = NULL,
@@ -22,7 +21,7 @@ selectImageInput <- function(inputId, label, choices, images = NULL,
   shiny::addResourcePath(
     prefix='selectImage',
     directoryPath=system.file("lib/selectImage",
-                              package='shinyinvoer')
+                              package='shi18ny')
   )
 
   choices_list <- lapply(seq_along(choices), function(x){
@@ -34,9 +33,9 @@ selectImageInput <- function(inputId, label, choices, images = NULL,
 
   if(is.numeric(selected))
     selected <- choices[selected]
-  if(is.null(placeholder)){
+  if(is.null(placeholder) & !is.null(selected)){
     x <- choices_list[[selected]]
-    placeholder <- shiny::div(class = "selectImage", shiny::img(src=x$image), x$label)
+    placeholder <- shiny::div(class = "selectImage", img(src=x$image), x$label)
   }
 
   input <- jsonlite::toJSON(choices_list, auto_unbox = TRUE)
@@ -73,7 +72,7 @@ selectImageInput <- function(inputId, label, choices, images = NULL,
 #' @param width width in of input.
 #'
 #' @export
-updateSelectImageInput <- function(session, inputId, label = NULL, choices = NULL,
+updateSelectImageInput <- function (session, inputId, label = NULL, choices = NULL,
                                     images = NULL, selected = NULL) {
   message <- dropNulls(
     list(

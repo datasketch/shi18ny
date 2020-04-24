@@ -22,22 +22,20 @@ server <- function(input, output, session) {
     defaultLang = "en",
     availableLangs = c("es","en")
   )
-  lang <- callModule(langSelector,"lang", i18n = i18n, showSelector=TRUE)
+  lang <- callModule(langSelector,"lang", i18n = i18n, showSelector = TRUE)
   output$debug <- renderPrint({
     cat(c("Selected Lang: ",lang(),"\nReactive translations: \n",
-      i_("shi18ny.language",lang()),
-      i_("shi18ny.download",lang()),
+      i_("language",lang()),
+      i_("download",lang()),
       i_("myslang.hi"), lang())
     )
   })
 
   output$results <- renderUI({
     list(
-      br(),
-      hr(),
       h2(i_("this_is_reactive",lang())),
       h1(i_("myslang.hi",lang())),
-      h2(i_("shi18ny.language",lang()),":",
+      h2(i_("language",lang()),":",
          span(lang()))
     )
   })

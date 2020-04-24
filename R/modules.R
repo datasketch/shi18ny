@@ -1,7 +1,7 @@
 #' @export
 langSelectorInput <- function(id,
                               position = "right",
-                              width = 40) {
+                              width = 80) {
   ns <- NS(id)
   cls <- ""
   style <- ""
@@ -15,7 +15,11 @@ langSelectorInput <- function(id,
     shinyjs::hidden(
       tags$div(id=ns("langContainer"), class = cls,
                style= style,
-               selectLangInput(ns("langInner"), label="", choices = NULL, selected = 1, width = width)
+               selectLangInput(ns("langInner"), label="",
+                               langs = NULL,
+                               flags = NULL,
+                               placeholder = NULL,
+                               selected = NULL, width = width)
       )
     )
   )
@@ -33,30 +37,30 @@ langSelector <- function(input, output, session,
   # observe({
   initLocale <- reactive({
     selected <- queryLang() %||% config$defaultLang
-    #message("selected2 ", selected,"config", config$defaultLang)
-    #message(showSelector)
+    message("selected2 ", selected," config ", config$defaultLang)
+    message(showSelector)
     if(showSelector){
-    #   message(showSelector)
-    #   return(queryLang())
-    # }else{
+      #   message(showSelector)
+      #   return(queryLang())
+      # }else{
       shinyjs::show("langContainer")
     }
-      updateSelectLangInput(session, 'langInner',
-                           label = "",
-                           choices = config$availableLangs,
-                           selected = selected)
+    message("config_av_langs",config$availableLangs)
+    updateSelectLangInput(session, 'langInner',
+                          langs = config$availableLangs,
+                          selected = selected)
     # return(reactive(selected))
     #selected <- queryLang()
     # if(is.null(selected)) return(config$defaultLang)
     # if(!showSelector) return(selected)
-    #message("selected3", selected, " config ", config$defaultLang)
+    message("selected3", selected, " config ", config$defaultLang)
     selected
   })
 
   currentLocale <- reactive({
     initLocale()
-    #message("initLocale", initLocale())
-    #message("input3", input$langInner, " is null ",is.null(input$langInner))
+    message("initLocale: ", initLocale())
+    message("input3 ", input$langInner, " is null ",is.null(input$langInner))
     # if(is.null(input$langInner))
     #   return(initLocale())
     input$langInner

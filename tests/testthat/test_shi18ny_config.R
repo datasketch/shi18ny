@@ -41,6 +41,15 @@ test_that("i18n Config",{
   )
   config <- i18nConfig(opts)
   expect_error(i18nLoad(opts),"Requested languages not in locale folder")
+
+  i18n <- list(
+    defaultLang = "en",
+    availableLangs = c("es","en")
+  )
+  i18n <- i18nLoad(i18n)
+  config <- i18n$.config
+
+
 })
 
 

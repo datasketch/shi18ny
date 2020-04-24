@@ -13,16 +13,17 @@
 #' @param width width in of input.
 #'
 #' @export
-selectLangInput <- function(inputId, label, langs,
+selectLangInput <- function(inputId, label,
+                            langs,
                             flags = NULL,
                             show_flags = TRUE,
-                            selected = 1,
+                            selected = NULL,
                             placeholder = NULL,
                             width = 100) {
   if(show_flags){
     flags <- flags %||% get_flags_image(langs)
   }
-  selectImageInput(inputId, label = label, choices = langs,
+  selectImageInput(paste0(inputId), label = label, choices = langs,
                    images = flags, selected = selected, placeholder = placeholder,
                    width = width)
 
@@ -46,8 +47,9 @@ updateSelectLangInput <- function(session, inputId, label = NULL, langs = NULL,
   if(show_flags){
     flags <- flags %||% get_flags_image(langs)
   }
-  updateSelectImageInput(session, inputId, label = label, choices = langs,
-                   images = flags, selected = selected)
+  updateSelectImageInput(session, paste0(inputId), label = label,
+                         choices = langs,
+                         images = flags, selected = selected)
 
 }
 
