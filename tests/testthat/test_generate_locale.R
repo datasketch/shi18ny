@@ -25,7 +25,7 @@ test_that("i18n Config",{
   src_path <- system.file("examples", package = "shi18ny")
   generate_locale(src_path = src_path, langs = c("pt","it"))
   expect_equal(list.files("locale"), c("it.yaml", "pt.yaml"))
-  yamlLocale <- yaml.load_file(file.path("locale","it.yaml"))
+  yamlLocale <- yaml::yaml.load_file(file.path("locale","it.yaml"))
   level1_keywords <- keywords[!grepl("\\.", keywords)]
   expect_true(all(level1_keywords %in% names(yamlLocale)))
 
@@ -35,7 +35,7 @@ test_that("i18n Config",{
   generate_locale(src_path = src_path, langs = langs, i18n = i18n)
   expect_equal(list.files(newLocaleDir, pattern = ".yaml"), paste0(langs, ".yaml"))
 
-  yamlLocale2 <- yaml.load_file(file.path(newLocaleDir,"it.yaml"))
+  yamlLocale2 <- yaml::yaml.load_file(file.path(newLocaleDir,"it.yaml"))
   expect_true(all(level1_keywords %in% names(yamlLocale2)))
 
   unlink(newLocaleDir, recursive = TRUE)

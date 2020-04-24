@@ -2,9 +2,16 @@
 
 
 #' @export
-i_ <- function(str, lang = NULL, i18n = NULL, markdown = FALSE){
+i_ <- function(str, lang = NULL, i18n = NULL, markdown = FALSE,
+               keys = c("name","label")){
   if(is.null(i18n)) i18n <- i18nLoad()
   lang <- lang %||% "en"
+  if(is.null(str)) return()
+
+  if(is.list(str)){
+    return(i_list(str, lang, keys = keys))
+  }
+
   strs <- strsplit(str,".",fixed = TRUE)
   i18nLang <- i18n[[lang]]
   ss <- lapply(strs, function(s){
@@ -16,6 +23,23 @@ i_ <- function(str, lang = NULL, i18n = NULL, markdown = FALSE){
   })
   #if(length(ss) == 1) ss <- unlist(ss)
   unlist(ss)
+}
+
+
+i_list <- function(l, lang, keys = NULL){
+  if(!has_sublist(l)){
+    l_keys <- removeNulls(l[keys])
+    return(modifyList(l, lapply(l_keys, i_, lang = lang), keep.null = TRUE))
+  }else{
+    l2 <- lapply(l, function(ll){
+      if(!is.list(ll)){
+        return(i_(ll, lang))
+      }else{
+        i_list(ll, lang, keys)
+      }
+    })
+  }
+  l2
 }
 
 #' @export
@@ -58,8 +82,7 @@ uiLangUpdate <- function(classes, lang){
 
 #' @export
 availableLangs <- function(localeDir = NULL){
-  x <- read.csv(system.file("ui-translations.csv", package = "shi18ny"), stringsAsFactors = FALSE)
-  sort(names(x)[-1])
+  sort(shi18ny::available_langs$lang)
 }
 
 

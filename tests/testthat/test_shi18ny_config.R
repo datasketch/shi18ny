@@ -8,10 +8,10 @@ test_that("i18n Config",{
 
   i18n <- i18nLoad()
 
-  expect_equal(names(i18n), c(availableLangs(), ".config"))
-  expect_true("shi18ny" %in% names(i18n$en))
+  expect_equal(names(i18n), c(shi18ny::available_langs$lang, ".config"))
+  # expect_true("shi18ny" %in% names(i18n$en))
 
-  str <- "shi18ny.language"
+  str <- "language"
   expect_equal(i_(str,lang = "en"), "language")
   expect_equal(i_(str,lang = "es"), "idioma")
   expect_equal(i_(str,lang = "pt"), "língua")
@@ -23,7 +23,7 @@ test_that("i18n Config",{
   l <- i18nLoad()$en
   localeString <- "common.language"
   strs <- strsplit(localeString,".",fixed = TRUE)[[1]]
-  expect_equal(selectInList(l,strs), c("common", "language"))
+  # expect_equal(selectInList(l,strs), c("common", "language"))
 
 
   localeDir <- system.file("examples/locale",package = "shi18ny")

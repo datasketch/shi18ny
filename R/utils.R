@@ -48,7 +48,7 @@ undotList <- function(x){
 }
 
 
-`%||%` <- function (x, y)
+`%||%` <- function(x, y)
 {
   if (is.empty(x))
     return(y)
@@ -59,9 +59,24 @@ undotList <- function(x){
   else x
 }
 
-is.empty <- function (x){
+is.empty <- function(x){
   !as.logical(length(x))
 }
+
+removeNulls <- function (x){
+  if (length(x) == 0 || !is.list(x))
+    return(x)
+  if (is.empty(x))
+    return(list())
+  x[!unlist(lapply(x, is.null))]
+}
+
+has_sublist <- function(l){
+  any(unlist(lapply(l, is.list)))
+}
+
+
+
 
 # Borrowed from package: tools
 file_path_sans_ext <- function (x, compression = FALSE)

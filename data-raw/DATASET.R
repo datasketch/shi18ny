@@ -1,5 +1,22 @@
 library(tidyverse)
 
+
+translations <- read_csv("data-raw/ui-translations.csv")
+available_langs <- read_csv("data-raw/available-langs.csv")
+
+default_fallbacks = list(
+  "es" = "pt",
+  "pt" = "es",
+  "fr" = "pt",
+  "de" = "nl",
+  "nl" = "de"
+)
+
+usethis::use_data(available_langs, default_fallbacks, translations,
+                  internal = TRUE)
+
+
+
 # PNG flags from
 # https://github.com/gosquared/flags
 
@@ -47,4 +64,4 @@ lapply(transpose(langs_country), function(x){
 
 
 
-#usethis::use_data("DATASET")
+

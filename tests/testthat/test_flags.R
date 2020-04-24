@@ -2,12 +2,16 @@ context("Translations")
 
 test_that("there are flags for all languages",{
 
-
-
-  images <- list.files(system.file("flags","gosquared", package = "shi18ny"), full.names = TRUE)
+  images <- list.files(system.file("flags","svg", package = "shi18ny"), full.names = TRUE)
   imagesNames <- basename(file_path_sans_ext(images))
-  availableLangs()[!availableLangs() %in% imagesNames]
-  expect_true(all(availableLangs() %in% imagesNames))
+  shi18ny::available_langs$lang[!shi18ny::available_langs$lang %in% imagesNames]
+  expect_true(all(shi18ny::available_langs$lang %in% imagesNames))
+
+
+  images <- list.files(system.file("flags","png", package = "shi18ny"), full.names = TRUE)
+  imagesNames <- basename(file_path_sans_ext(images))
+  shi18ny::available_langs$lang[!shi18ny::available_langs$lang %in% imagesNames]
+  expect_true(all(shi18ny::available_langs$lang %in% imagesNames))
 
   choice <- "es"
   images <- list.files(system.file("flags", package = "shi18ny"), full.names = TRUE)
@@ -16,7 +20,7 @@ test_that("there are flags for all languages",{
 
   # TEST SELECT LANG WIDGET
 
-  selectLangInput("lang", "Language", langs = c("es","pt"), selected = 1)
+  # selectLangInput("lang", "Language", langs = c("es","pt"), selected = 1)
 
   library(shiny)
   library(shi18ny)
