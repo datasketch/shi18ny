@@ -9,13 +9,14 @@ i_ <- function(str, lang = NULL, i18n = NULL, markdown = FALSE,
   if(is.null(str)) return()
 
   if(is.list(str)){
-    return(i_list(str, lang, keys = keys))
+    return(i_list(str, lang, i18n = i18n, keys = keys))
   }
 
   strs <- strsplit(str,".",fixed = TRUE)
   i18nLang <- i18n[[lang]]
   ss <- lapply(strs, function(s){
-    t <- selectInList(i18nLang, s) %||% paste0(s,collapse = ".")
+    t <- selectInList(i18nLang, s)
+    if(length(t) > 1) t <- paste0(t,collapse = ".")
     if(markdown){
       t <- markdownToHTML(text=t,fragment.only = TRUE)
     }
@@ -26,16 +27,16 @@ i_ <- function(str, lang = NULL, i18n = NULL, markdown = FALSE,
 }
 
 
-i_list <- function(l, lang, keys = NULL){
+i_list <- function(l, lang, i18n = NULL, keys = NULL){
   if(!has_sublist(l)){
     l_keys <- removeNulls(l[keys])
-    return(modifyList(l, lapply(l_keys, i_, lang = lang), keep.null = TRUE))
+    return(modifyList(l, lapply(l_keys, i_, lang = lang, i18n = i18n), keep.null = TRUE))
   }else{
     l2 <- lapply(l, function(ll){
       if(!is.list(ll)){
-        return(i_(ll, lang))
+        return(i_(ll, lang = lang, i18n = i18n))
       }else{
-        i_list(ll, lang, keys)
+        i_list(ll, lang, i18n = i18n, keys = keys)
       }
     })
   }
