@@ -28,14 +28,14 @@ server <- function(input, output, session) {
 
   output$options <- renderUI({
     choices <- c("first", "second")
-    names(choices) <- toupper(c(i_("shi18ny.share", lang()), i_("shi18ny.shape",lang())))
+    names(choices) <- toupper(c(i_("share", lang()), i_("shape",lang())))
     selectizeInput("sel_options", i_("select", lang()), choices)
   })
 
   output$results <- renderUI({
     list(
       h1(i_("myslang.hi",lang())),
-      h1(i_("shi18ny.language",lang()))
+      h1(i_("language",lang()))
     )
   })
 

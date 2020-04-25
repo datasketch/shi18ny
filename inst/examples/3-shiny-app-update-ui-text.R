@@ -8,7 +8,7 @@ ui <- navbarPage("Navbar!",
                           sidebarLayout(
                             sidebarPanel(
                               useShi18ny(),
-                              langSelectorInput("lang", position = "right"),
+                              langSelectorInput("lang", position = "fixed"),
                               radioButtons("plotType", ui_("myslang.hi"),
                                            c("Scatter"="p", "Line"="l")
                               ),
@@ -50,8 +50,8 @@ server <- function(input, output, session) {
     i18nClasses <- input$shi18ny_ui_classes
 
      c("Selected Lang",lang(),
-       i_("shi18ny.language",lang()),
-       i_("shi18ny.download",lang()),
+       i_("language",lang()),
+       i_("download",lang()),
        i_("myslang.hi"))
        i_(gsub("i18n ","",i18nClasses))
   })
@@ -59,7 +59,7 @@ server <- function(input, output, session) {
   output$results <- renderUI({
     list(
       h1(i_("myslang.hi",lang())),
-      h1(i_("shi18ny.language",lang()))
+      h1(i_("language",lang()))
     )
   })
 

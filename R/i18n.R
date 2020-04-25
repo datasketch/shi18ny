@@ -11,7 +11,7 @@ i_ <- function(str, lang = NULL, i18n = NULL, markdown = FALSE,
   if(is.list(str)){
     return(i_list(str, lang, i18n = i18n, keys = keys))
   }
-
+  if(!is.character(str)) return(str)
   strs <- strsplit(str,".",fixed = TRUE)
   i18nLang <- i18n[[lang]]
   ss <- lapply(strs, function(s){
@@ -28,6 +28,7 @@ i_ <- function(str, lang = NULL, i18n = NULL, markdown = FALSE,
 
 
 i_list <- function(l, lang, i18n = NULL, keys = NULL){
+  if(length(class(l)) > 1) return(l)
   if(!has_sublist(l)){
     l_keys <- removeNulls(l[keys])
     return(modifyList(l, lapply(l_keys, i_, lang = lang, i18n = i18n), keep.null = TRUE))
@@ -83,7 +84,7 @@ uiLangUpdate <- function(classes, lang){
 
 #' @export
 availableLangs <- function(localeDir = NULL){
-  sort(shi18ny::available_langs$lang)
+  sort(shi18ny:::available_langs$lang)
 }
 
 

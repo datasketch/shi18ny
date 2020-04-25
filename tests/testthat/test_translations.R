@@ -75,6 +75,22 @@ test_that("list translations work",{
 
   expect_equal(xl, xl2)
 
+  # Check it works with chr and non-chr lists
+
+  l <- list(
+    label = "hello",
+    numbers = 1:3,
+    info = list(title = "hello world", information = TRUE,
+                more = list(
+                  label = "abort",
+                  more2 = ggplot2::qplot()
+                ))
+  )
+  xl <- i_list(l, "es")
+  expect_equal(xl$label, "hola")
+  expect_equal(xl$numbers, 1:3)
+  expect_equal(xl$info$more$label, "Cancelar")
+  expect_equal(xl$info$more$more2, l$info$more$more2)
 
 
 })

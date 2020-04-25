@@ -3,7 +3,7 @@
 #' @export
 i18nLoad <- function(opts = NULL){
   config <- i18nConfig(opts)
-  availableSystemLangs <- shi18ny::available_langs
+  availableSystemLangs <- shi18ny:::available_langs
   available_lang_codes <- availableSystemLangs[[1]]
   localeDir <- config$localeDir
   if(!dir.exists(localeDir)){
@@ -25,7 +25,7 @@ i18nLoad <- function(opts = NULL){
 
   # shi18ny <- read.csv(system.file("ui-translations.csv", package = "shi18ny"),
   #                     stringsAsFactors = FALSE)
-  shi18ny <- shi18ny::translations
+  shi18ny <- shi18ny:::translations
   shi18ny_ids <- shi18ny$id
   shi18ny <- shi18ny[available_lang_codes]
   shin18ny <- lapply(shi18ny, function(x){
@@ -57,9 +57,9 @@ i18nLoad <- function(opts = NULL){
 i18nConfig <- function(opts = NULL){
   defaultOpts <- list(
     defaultLang = "en",
-    availableLangs = shi18ny::available_langs$lang,
+    availableLangs = shi18ny:::available_langs$lang,
     localeDir = "locale",
-    fallbacks = shi18ny::default_fallbacks,
+    fallbacks = shi18ny:::default_fallbacks,
     queryParameter = "lang"
   )
   config <- defaultOpts
