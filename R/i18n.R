@@ -42,9 +42,13 @@ i_list <- function(l, lang, i18n = NULL, keys = NULL){
       i_list(ll, lang, i18n = i18n, keys = keys)
     }
   })
-  modifyList(modifyList(l, l_no_subs_i, keep.null = TRUE),
-             l_subs_i, keep.null = TRUE)
+  l0 <- c(l_no_subs_i, l_subs_i)
+  if(!is.null(names(l))) l0 <- l0[names(l)]
+  l0
 }
+
+
+
 
 #' @export
 ui_ <- function(string, lang = NULL){
