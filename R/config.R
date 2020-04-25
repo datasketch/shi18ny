@@ -40,9 +40,9 @@ i18nLoad <- function(opts = NULL){
     l <- shin18ny[[lang]]
     if(!is.null(customLocale)){
       if(is.null(customLocale[[lang]])){
-        l <- c(l, customLocale[["en"]])
+        l <- c(customLocale[["en"]], l)
       }else
-        l <- c(l, customLocale[[lang]])
+        l <- c(customLocale[[lang]], l)
     }
     l
   })
