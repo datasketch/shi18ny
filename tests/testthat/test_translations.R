@@ -82,16 +82,39 @@ test_that("list translations work",{
     numbers = 1:3,
     info = list(title = "hello world", information = TRUE,
                 more = list(
-                  label = "abort",
+                  label2 = "abort",
                   more2 = ggplot2::qplot()
                 ))
   )
-  xl <- i_list(l, "es")
+  xl <- i_list(l, "es", keys = c("label","label2"))
   expect_equal(xl$label, "hola")
   expect_equal(xl$numbers, 1:3)
-  expect_equal(xl$info$more$label, "Cancelar")
+  expect_equal(xl$info$more$label2, "Cancelar")
   expect_equal(xl$info$more$more2, l$info$more$more2)
 
+  # Check keys work
+  # First level
+  l <- list(label = "hello", information = "information")
+  xl <- i_list(l, "es", keys = c("information"))
+  expect_equal(xl$label, "hello")
+  expect_equal(xl$information, "información")
+  xl <- i_list(l, "es", keys = c("label"))
+  expect_equal(xl$label, "hola")
+  expect_equal(xl$information, "information")
+
+  # More levels
+  l <- list(label = "hello", information = "information",
+            more = list(label = "hello", information = "information"))
+  xl <- i_list(l, "es", keys = c("information"))
+  expect_equal(xl$label, "hello")
+  expect_equal(xl$information, "información")
+  expect_equal(xl$more$label, "hello")
+  expect_equal(xl$more$information, "información")
+  xl <- i_list(l, "es", keys = c("label"))
+  expect_equal(xl$label, "hola")
+  expect_equal(xl$information, "information")
+  expect_equal(xl$more$label, "hola")
+  expect_equal(xl$more$information, "information")
 
 })
 

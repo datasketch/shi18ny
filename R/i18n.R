@@ -28,20 +28,22 @@ i_ <- function(str, lang = NULL, i18n = NULL, markdown = FALSE,
 
 
 i_list <- function(l, lang, i18n = NULL, keys = NULL){
-  if(length(class(l)) > 1) return(l)
-  if(!has_sublist(l)){
-    l_keys <- removeNulls(l[keys])
-    return(modifyList(l, lapply(l_keys, i_, lang = lang, i18n = i18n), keep.null = TRUE))
-  }else{
-    l2 <- lapply(l, function(ll){
-      if(!is.list(ll)){
-        return(i_(ll, lang = lang, i18n = i18n))
-      }else{
-        i_list(ll, lang, i18n = i18n, keys = keys)
-      }
-    })
-  }
-  l2
+  if(length(class(l)) > 1) return(l) # return things that are not only lists
+  idx_subs <- unlist(lapply(l, is.list))
+  l_no_subs <- l[!idx_subs]
+  l_no_subs_i <- modifyList(l_no_subs,
+                            lapply(removeNulls(l_no_subs[keys]), i_, lang = lang,
+                                   i18n = i18n), keep.null = TRUE)
+  l_subs <- l[idx_subs]
+  l_subs_i <- lapply(l_subs, function(ll){
+    if(!is.list(ll)){
+      return(i_(ll, lang = lang, i18n = i18n))
+    }else{
+      i_list(ll, lang, i18n = i18n, keys = keys)
+    }
+  })
+  modifyList(modifyList(l, l_no_subs_i, keep.null = TRUE),
+             l_subs_i, keep.null = TRUE)
 }
 
 #' @export
