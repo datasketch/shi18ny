@@ -7,3 +7,6 @@ myslang:
   plot: Chart
 navbar: Navigation
 hello: Hello!!!
+table: Table
+pasted: Copy paste
+file_upload: Upload file

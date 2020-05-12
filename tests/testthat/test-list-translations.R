@@ -124,4 +124,12 @@ test_that("list translations work",{
 
 })
 
+test_that("named lists works",{
+
+  path <- system.file("examples", "ex03-shi18ny", "parmesan", package = "parmesan")
+  parmesan <- parmesan::parmesan_load(path)
+  i_(parmesan, "es")
+
+})
+
 
