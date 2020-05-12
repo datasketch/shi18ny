@@ -121,14 +121,48 @@ test_that("list translations work",{
   expect_equal(xl$more$inputs[[1]]$id, "hello")
   expect_equal(xl$more$inputs[[1]]$label, "hola")
 
+  # Empty list
+  empty_list <- list()
+  expect_equal(i_list(empty_list),list())
+  with_empty_list <- list(label = "hello", y = list())
+  expect_equal(i_list(with_empty_list, "es", keys = "label"),
+               list(label = "hola", y = list()))
 
 })
 
 test_that("named lists works",{
 
-  path <- system.file("examples", "ex03-shi18ny", "parmesan", package = "parmesan")
-  parmesan <- parmesan::parmesan_load(path)
-  i_(parmesan, "es")
+  if (require("parmesan", character.only = TRUE)){
+
+    path <- system.file("examples", "ex03-shi18ny", "parmesan", package = "parmesan")
+    parmesan <- parmesan::parmesan_load(path)
+    localeDir <- system.file("examples", "ex03-shi18ny", "locale", package = "parmesan")
+    opts <- list(
+      localeDir = localeDir,
+      defaultLang = "es",
+      fallbacks = list("es" = "en")
+    )
+    config <- i18nConfig(opts)
+    i18n <- i18nLoad(opts)
+    parmesan_es <- i_(parmesan, "es", i18n = i18n)
+    parmesan_es
+
+    path <- system.file("examples", "ex07-reactive-output-shi18ny", "parmesan", package = "parmesan")
+    parmesan <- parmesan::parmesan_load(path)
+
+    localeDir <- system.file("examples", "ex07-reactive-output-shi18ny", "locale", package = "parmesan")
+    opts <- list(
+      localeDir = localeDir,
+      defaultLang = "es",
+      fallbacks = list("es" = "en")
+    )
+
+    config <- i18nConfig(opts)
+    i18n <- i18nLoad(opts)
+
+    parmesan_es <- i_(parmesan, "es", i18n = i18n)
+
+  }
 
 })
 

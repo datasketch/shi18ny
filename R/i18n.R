@@ -28,6 +28,7 @@ i_ <- function(str, lang = NULL, i18n = NULL, markdown = FALSE,
 
 
 i_list <- function(l, lang, i18n = NULL, keys = NULL){
+  if(length(l) == 0) return(list())
   if(length(class(l)) > 1) return(l) # return things that are not only lists
   idx_subs <- unlist(lapply(l, is.list))
   l_no_subs <- l[!idx_subs]
@@ -36,6 +37,10 @@ i_list <- function(l, lang, i18n = NULL, keys = NULL){
                                    i18n = i18n), keep.null = TRUE)
   l_subs <- l[idx_subs]
   l_subs_i <- lapply(l_subs, function(ll){
+    if(length(ll) == 0) return(ll)
+    # message("i: ", i)
+    # i <<- i + 1
+    # str(ll)
     if(!is.list(ll)){
       return(i_(ll, lang = lang, i18n = i18n))
     }else{

@@ -65,6 +65,8 @@ i18nConfig <- function(opts = NULL){
   config <- defaultOpts
   if(!is.null(opts))
     config <- modifyList(defaultOpts, opts, keep.null = TRUE)
+  if(!dir.exists(config$localeDir))
+    stop("localeDir does not exists")
   config
 }
 
