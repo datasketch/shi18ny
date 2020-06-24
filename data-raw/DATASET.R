@@ -13,7 +13,7 @@ default_fallbacks = list(
 )
 
 usethis::use_data(available_langs, default_fallbacks, translations,
-                  internal = TRUE)
+                  internal = TRUE, overwrite = TRUE)
 
 
 
