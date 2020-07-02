@@ -2,7 +2,7 @@
 title: "Getting started"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{getting-started}
+  %\VignetteIndexEntry{Getting started}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -10,13 +10,53 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
+  eval=FALSE,
   comment = "#>"
 )
 ```
 
-```{r setup}
-library(shi18ny)
+Here we show you two different ways in which you can install the `shi18ny` package:
+
+## To use `shi18ny` in your Shiny apps
+
+The easiest way to use `shi18ny` to internationalize your Shiny apps and make data science more accessible across the world is by installing the package with the `devtools::install_github()` function. Note that the `devtools` package needs to be installed before you can run this function.
+
+```{r install-github}
+# install.packages("devtools")
+devtools::install_github("datasketch/shi18ny")
 ```
 
 
+## To contribute
+
+If you want to contribute to `shi18ny` in any of the ways suggested in `vignette("contributing")`, the steps to download, build and install the package is as follows:
+
+1. Fork the repository to your own Github account.
+2. Open Git Bash and change the working directory to the location where you want the cloned repository.
+3. Clone the repository from your Github account using the following command in the Git Bash:
+```{git clone}
+git clone https://github.com/YOUR-USERNAME/shi18ny.git
+```
+
+4. In R, set the working directory to be the file path to the folder called `shi18ny` that you just created by cloning the repository, for example:
+```{r setwd}
+setwd("./path/to/folder/shi18ny")
+```
+
+5. Make sure the `devtools` package is installed, and then build the package:
+```{r build}
+devtools::build()
+```
+6. You can now install the package:
+```{r install}
+devtools::install()
+```
+
+### Naming conventions
+
+If you want to contribute to `shi18ny` please create a local branch based on the master branch before making any of your changes. For name of this branch, please use the following naming conventions:
+
+* for new features: `feature/name_of_feature`
+* for bug fixes: `fix/name_of_fix`
+* for anything else, for example changes to the documentation: `misc/name_of_change`
 
