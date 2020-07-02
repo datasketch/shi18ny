@@ -13,25 +13,25 @@ i_(str, lang = NULL, i18n = NULL, markdown = FALSE, keys = c("name", "label"))
 translated into.}
 
 \item{i18n}{List of language configurations. Options that can be set
-  are:
+are:
 
-  `defaultLang` Default language used in Shiny app
+\code{defaultLang} Default language used in Shiny app
 
-  `availableLangs` Language that can be chosen for translation in Shiny app;
-  there are currently 15 available languages
+\code{availableLangs} Language that can be chosen for translation in Shiny app;
+there are currently 15 available languages
 
-  `localeDir` Directory to `yaml` files which contain custom keyword
-  translations
+\code{localeDir} Directory to \code{yaml} files which contain custom keyword
+translations
 
-  `fallbacks` List of fallback languages if translation for a word is not
-  found in desired language
+\code{fallbacks} List of fallback languages if translation for a word is not
+found in desired language
 
-  `queryParameter` String to define query parameter if language to be set
-  through URL}
+\code{queryParameter} String to define query parameter if language to be set
+through URL}
 
 \item{markdown}{TODO}
 
-\item{keys}{If `str` is a list this is a string (or a vector of strings)
+\item{keys}{If \code{str} is a list this is a string (or a vector of strings)
 specifying which key(s) of the list to translate.}
 }
 \value{
@@ -41,25 +41,24 @@ Translation of input text in the same format as the input.
 Translate strings, vectors or lists in the Server of a Shiny app.
 }
 \details{
-There are currently 15 languages available for translation:
-
- | code  | language            |
- | ----- | ------------------- |
- | ar    | Arabic              |
- | ca    | Catalan             |
- | da    | Danish              |
- | de    | German              |
- | en    | English             |
- | es    | Spanish             |
- | fr    | French              |
- | he    | Hebrew              |
- | hi    | Hindi               |
- | it    | Italian             |
- | pt    | Portuguese          |
- | pt_BR | Portuguese (Brazil) |
- | ru    | Russian             |
- | sv    | Swedish             |
- | zh_CN | Chinese             |
+There are currently 15 languages available for translation:\tabular{ll}{
+   code \tab language \cr
+   ar \tab Arabic \cr
+   ca \tab Catalan \cr
+   da \tab Danish \cr
+   de \tab German \cr
+   en \tab English \cr
+   es \tab Spanish \cr
+   fr \tab French \cr
+   he \tab Hebrew \cr
+   hi \tab Hindi \cr
+   it \tab Italian \cr
+   pt \tab Portuguese \cr
+   pt_BR \tab Portuguese (Brazil) \cr
+   ru \tab Russian \cr
+   sv \tab Swedish \cr
+   zh_CN \tab Chinese \cr
+}
 }
 \examples{
 i_("hello", lang = "de")
