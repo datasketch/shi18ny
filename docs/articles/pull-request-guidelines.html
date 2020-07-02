@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Getting started • shi18ny</title>
+<title>Pull Request Guidelines • shi18ny</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<script src="../extra.js"></script><meta property="og:title" content="Getting started">
+<script src="../extra.js"></script><meta property="og:title" content="Pull Request Guidelines">
 <meta property="og:description" content="shi18ny">
 <meta property="og:image" content="https://shi18ny.datasketch.dev/reference/figures/card.png">
 <meta property="og:image:alt" content="Pool noodles configured to form the word poolnoodlr">
@@ -100,67 +100,27 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Getting started</h1>
+      <h1 data-toc-skip>Pull Request Guidelines</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/datasketch/shi18ny/blob/master/vignettes/getting-started.Rmd"><code>vignettes/getting-started.Rmd</code></a></small>
-      <div class="hidden name"><code>getting-started.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/datasketch/shi18ny/blob/master/vignettes/pull-request-guidelines.Rmd"><code>vignettes/pull-request-guidelines.Rmd</code></a></small>
+      <div class="hidden name"><code>pull-request-guidelines.Rmd</code></div>
 
     </div>
 
     
     
-<p>Here we show you two different ways in which you can install the <code>shi18ny</code> package:</p>
-<div id="to-use-shi18ny-in-your-shiny-apps" class="section level2">
-<h2 class="hasAnchor">
-<a href="#to-use-shi18ny-in-your-shiny-apps" class="anchor"></a>To use <code>shi18ny</code> in your Shiny apps</h2>
-<p>The easiest way to use <code>shi18ny</code> to internationalize your Shiny apps and make data science more accessible across the world is by installing the package with the <code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github()</a></code> function. Note that the <code>devtools</code> package needs to be installed before you can run this function.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="co"># install.packages("devtools")</span>
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"datasketch/shi18ny"</span>)</pre></body></html></div>
-</div>
-<div id="to-contribute" class="section level2">
-<h2 class="hasAnchor">
-<a href="#to-contribute" class="anchor"></a>To contribute</h2>
-<p>If you want to contribute to <code>shi18ny</code> in any of the ways suggested in <code><a href="../articles/contributing.html">vignette("contributing")</a></code>, the steps to download, build and install the package is as follows:</p>
+<p>Before submitting a pull request, please make sure that it meets the following guidelines:</p>
 <ol style="list-style-type: decimal">
-<li>Fork the repository to your own Github account.</li>
-<li>Open Git Bash and change the working directory to the location where you want the cloned repository.</li>
-<li>Clone the repository from your Github account using the following command in the Git Bash:</li>
+<li>If the pull requests implements a new feature, the documentation should be updated. To be in line with the current package documentation please do this in the format of <a href="https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html">Roxygen2 documentation</a>.</li>
+<li>If the pull request is a bug fix or implements a new feature, new tests should be included and all tests should have passed before submitting the pull request. You can do this by pressing Cmd/Ctrl + Shift T if you’re using R Studio, otherwise run <code><a href="https://devtools.r-lib.org//reference/test.html">devtools::test()</a></code>.</li>
+<li>For all pull requests, please include a top-line description of your changes.</li>
 </ol>
-<pre class="git"><code>git clone https://github.com/YOUR-USERNAME/shi18ny.git</code></pre>
-<ol start="4" style="list-style-type: decimal">
-<li>In R, set the working directory to be the file path to the folder called <code>shi18ny</code> that you just created by cloning the repository, for example:</li>
-</ol>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span>(<span class="st">"./path/to/folder/shi18ny"</span>)</pre></body></html></div>
-<ol start="5" style="list-style-type: decimal">
-<li>Make sure the <code>devtools</code> package is installed, and then build the package:</li>
-</ol>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/build.html">build</a></span>()</pre></body></html></div>
-<ol start="6" style="list-style-type: decimal">
-<li>You can now install the package:</li>
-</ol>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/install.html">install</a></span>()</pre></body></html></div>
-<div id="naming-conventions" class="section level3">
-<h3 class="hasAnchor">
-<a href="#naming-conventions" class="anchor"></a>Naming conventions</h3>
-<p>If you want to contribute to <code>shi18ny</code> please create a local branch based on the master branch before making any of your changes. For name of this branch, please use the following naming conventions:</p>
-<ul>
-<li>for new features: <code>feature/name_of_feature</code>
-</li>
-<li>for bug fixes: <code>fix/name_of_fix</code>
-</li>
-<li>for anything else, for example changes to the documentation: <code>misc/name_of_change</code>
-</li>
-</ul>
 </div>
-</div>
-  </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 
