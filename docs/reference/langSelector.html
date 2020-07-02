@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • shi18ny</title>
+<title>Language selector — langSelector • shi18ny</title>
 
 
 <!-- jquery -->
@@ -41,7 +41,12 @@
   <link href="../extra.css" rel="stylesheet">
   <script src="../extra.js"></script>
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Language selector — langSelector" />
+<meta property="og:description" content="This Shiny module gets language that's currently selected in the language
+selector. It needs to be used in the
+Server to save the currently active language in a reactive. This reactive
+can then be passed to the i_ (TODO link to function documentation!)
+function to translate the text." />
 <meta property="og:image" content="https://shi18ny.datasketch.dev/reference/figures/card.png" />
 <meta property="og:image:alt" content="Pool noodles configured to form the word poolnoodlr" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -75,7 +80,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -140,86 +145,90 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Language selector</h1>
+    <small class="dont-index">Source: <a href='https://github.com/datasketch/shi18ny/blob/master/R/modules.R'><code>R/modules.R</code></a></small>
+    <div class="hidden name"><code>langSelector.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>This Shiny module gets language that's currently selected in the language
+selector. It needs to be used in the
+Server to save the currently active language in a reactive. This reactive
+can then be passed to the <code>i_</code> (TODO link to function documentation!)
+function to translate the text.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>langSelector</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>, <span class='kw'>i18n</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>showSelector</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-initialise" class="hasAnchor"><a href="#section-initialise" class="anchor"></a>Initialise</h2>
-          <p class="section-desc"><p>Initialise shi18ny package in the UI of the app.</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="useShi18ny.html">useShi18ny()</a></code> </p>
-        </td>
-        <td><p>Initialise shi18ny</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-translate" class="hasAnchor"><a href="#section-translate" class="anchor"></a>Translate</h2>
-          <p class="section-desc"><p>Translate text in UI and Server of Shiny app.</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="i18n.html">i_()</a></code> <code><a href="i18n.html">ui_()</a></code> </p>
-        </td>
-        <td><p>Translate text</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-select-language" class="hasAnchor"><a href="#section-select-language" class="anchor"></a>Select language</h2>
-          <p class="section-desc"><p>Select language for translation of text in Shiny app.</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="langSelectorInput.html">langSelectorInput()</a></code> </p>
-        </td>
-        <td><p>Language selector input</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="langSelector.html">langSelector()</a></code> </p>
-        </td>
-        <td><p>Language selector</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>i18n</th>
+      <td><p>List of language configurations;
+Options that can be set are:</p>
+<p><code>defaultLang</code> Default language used in Shiny app; default = "en"</p>
+<p><code>availableLangs</code> Language that can be chosen for translation in Shiny app;
+there are currently 15 available languages (see <strong>Available languages</strong>);
+defaults to all available languages</p>
+<p><code>localeDir</code> Directory to <code>yaml</code> files which contain custom keyword
+translations; default = "locale"</p>
+<p><code>fallbacks</code> List of fallback languages if translation for a word is not
+found in desired language; defaults to <strong>Default fallbacks</strong></p>
+<p><code>queryParameter</code> String to define query parameter if language to be set
+through URL; default = "lang"</p></td>
+    </tr>
+    <tr>
+      <th>showSelector</th>
+      <td><p>Boolean to specify if language selector should be
+displayed or not. Even if selector is not displayed, language can always
+be set by query parameter; default = "lang"</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>String of language code of currently selected languages.</p>
+    <h2 class="hasAnchor" id="available-languages"><a class="anchor" href="#available-languages"></a>Available languages</h2>
+
+    <p>There are currently 15 languages available for
+translation:</p><table class='table'>
+<tr><td>code</td><td>language</td></tr>
+<tr><td>ar</td><td>Arabic</td></tr>
+<tr><td>ca</td><td>Catalan</td></tr>
+<tr><td>da</td><td>Danish</td></tr>
+<tr><td>de</td><td>German</td></tr>
+<tr><td>en</td><td>English</td></tr>
+<tr><td>es</td><td>Spanish</td></tr>
+<tr><td>fr</td><td>French</td></tr>
+<tr><td>he</td><td>Hebrew</td></tr>
+<tr><td>hi</td><td>Hindi</td></tr>
+<tr><td>it</td><td>Italian</td></tr>
+<tr><td>pt</td><td>Portuguese</td></tr>
+<tr><td>pt_BR</td><td>Portuguese (Brazil)</td></tr>
+<tr><td>ru</td><td>Russian</td></tr>
+<tr><td>sv</td><td>Swedish</td></tr>
+<tr><td>zh_CN</td><td>Chinese</td></tr>
+</table>
+
+
+    <h2 class="hasAnchor" id="default-fallbacks"><a class="anchor" href="#default-fallbacks"></a>Default fallbacks</h2>
+
+    <p>If no fallback languages are specified,
+translations automatically fall back onto the following languages.</p><table class='table'>
+<tr><td>original language</td><td>fallback language</td></tr>
+<tr><td>es</td><td>pt</td></tr>
+<tr><td>pt</td><td>es</td></tr>
+<tr><td>fr</td><td>pt</td></tr>
+<tr><td>de</td><td>nl</td></tr>
+<tr><td>nl</td><td>de</td></tr>
+</table>
+
+
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
