@@ -14,6 +14,82 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(shi18ny)
-```
+Contributions to `shi18ny` are very welcome and greatly appreciated! Every contribution helps to improve the quality
+and reliability of the translations, and every contribution will be given credit.
+
+There are many ways in which you can help us improve `shi18ny`:
+
+# Ways to contribute
+
+## Report issues
+
+If you come across any issues in `shi18ny` we would appreciate if you could report them in the [issue section](https://github.com/datasketch/shi18ny/issues) of the package GitHub page.
+
+If you are reporting an issue, please tell us:
+
+* which operating system you're using and its version
+* detailed information about the issue
+* a minimal code example to reproduce the issue
+
+## Fix issues
+
+You can help us out by fixing any of the open issues that have been filed in the [issue section](https://github.com/datasketch/shi18ny/issues) of the package GitHub page.
+
+To fix an issue, follow these steps: 
+
+* fork and clone the GitHub repository
+* create a local branch from the master branch, with a branch name such as `fix/name_of_issue`
+* fix the issue
+* create a unit test for the issue you have fixed
+* run all tests in the package to ensure no other issues have appeared (if you're using RStudio press Cmd/Ctrl + Shift T, otherwise run `devtools::test()`
+* create a pull request for your issue fix
+
+## Report feature request
+
+We're always looking to expand `shi18ny` with new features that will promote the internationalisation of data science. If you have ideas for such features, don't hesitate to tell us by filing an issue on our GitHub page, and choose the issue type 'Feature request'.
+
+## Implement features
+
+To help us in advancing the internationalisation of data science you can also implement your own feature (or implement one of the open feature requests in the [issue section](https://github.com/datasketch/shi18ny/issues) of the package GitHub page).
+
+To implement your own feature, follow these steps: 
+
+* fork and clone the GitHub repository
+* create a local branch from the master branch, with a branch name such as `feature/name_of_feature`
+* implement the feature
+* create a unit test for the feature you have created
+* run all tests in the package to ensure no issues have appeared (if you're using RStudio press Cmd/Ctrl + Shift T, otherwise run `devtools::test()`
+* create a pull request for your feature with a description of the functionality of your feature
+
+## Add new language
+
+If the language you are looking for is not yet supported you can help by either
+1. filing an issue on the `shi18ny` [GitHub page](https://github.com/datasketch/shi18ny), or
+2. submitting your own translations to the package.
+
+To create your own translations, follow these steps:
+
+* fork and clone the GitHub repository
+* locate the `ui-translation.csv` file in the `data-raw` folder
+* create a new column for your language, with the column header being the language code
+* create a pull request for your new language
+
+## Expand existing language
+
+If you notice gaps in one of the existing languages, you can help us improve the package by expanding the dictionary for this language - especially in terms of data science-related words.
+
+To fill the gaps for an existing language, follow these steps:
+
+* fork and clone the GitHub repository
+* locate the `ui-translation.csv` file in the `data-raw` folder
+* locate the column with the code of the language you're looking to improve and fill the gaps
+* create a pull request for your language improvements
+
+## Write documentation
+
+There is always scope for improving the `shi18ny` documentation. Helpful ways to contribute to the documentation could be
+
+* improving documentation of functionality and examples of individual functions
+* adding to the range of examples on the package website
+* adding articles about use cases to the package website
+
