@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • shi18ny</title>
+<title>Add images to dropdown options — selectLangInput • shi18ny</title>
 
 
 <!-- jquery -->
@@ -41,7 +41,9 @@
   <link href="../extra.css" rel="stylesheet">
   <script src="../extra.js"></script>
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Add images to dropdown options — selectLangInput" />
+<meta property="og:description" content="This function works only with bootstrap for now. Borrowed from
+the package shinyinvoer." />
 <meta property="og:image" content="https://shi18ny.datasketch.dev/reference/figures/card.png" />
 <meta property="og:image:alt" content="Pool noodles configured to form the word poolnoodlr" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -75,7 +77,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -140,60 +142,57 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Add images to dropdown options</h1>
+    <small class="dont-index">Source: <a href='https://github.com/datasketch/shi18ny/blob/master/R/selectLangInput.R'><code>R/selectLangInput.R</code></a></small>
+    <div class="hidden name"><code>selectLangInput.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>This function works only with bootstrap for now. Borrowed from
+the package shinyinvoer.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>selectLangInput</span>(
+  <span class='no'>inputId</span>,
+  <span class='no'>label</span>,
+  <span class='no'>langs</span>,
+  <span class='kw'>flags</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>show_flags</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>selected</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>placeholder</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>100</span>
+)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="i_.html">i_()</a></code> </p>
-        </td>
-        <td><p>Translate text</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="selectImageInput.html">selectImageInput()</a></code> </p>
-        </td>
-        <td><p>Add images to dropdown options</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="selectLangInput.html">selectLangInput()</a></code> </p>
-        </td>
-        <td><p>Add images to dropdown options</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="updateSelectImageInput.html">updateSelectImageInput()</a></code> </p>
-        </td>
-        <td><p>Update select image input</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>inputId</th>
+      <td><p>The input slot that will be used to access the value.</p></td>
+    </tr>
+    <tr>
+      <th>placeholder</th>
+      <td><p>HTML to render as placeholder, defaults to empty div.</p></td>
+    </tr>
+    <tr>
+      <th>width</th>
+      <td><p>width in of input.</p></td>
+    </tr>
+    <tr>
+      <th>choices</th>
+      <td><p>List of values to select from, when named the names are
+appended to the right of the image.</p></td>
+    </tr>
+    <tr>
+      <th>images</th>
+      <td><p>List of image location that can be put in a src attribute.</p></td>
+    </tr>
     </table>
-  </div>
 
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
