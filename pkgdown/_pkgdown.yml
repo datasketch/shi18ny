@@ -15,6 +15,21 @@ template:
       creator: "@hadleywickham"
       site: "@rstudio"
       card: summary_large_image
+reference:
+- title: Initialise
+  desc: Initialise shi18ny package in the UI of the app.
+- contents:
+  - useShi18ny
+- title: Translate
+  desc:  Translate text in UI and Server of Shiny app.
+- contents:
+  - i_
+  - ui_
+- title: Select language
+  desc: Select language for translation of text in Shiny app.
+- contents:
+  - langSelectorInput
+  - langSelector
 authors:
   Datasketch:
     href: "http://institution.com"
