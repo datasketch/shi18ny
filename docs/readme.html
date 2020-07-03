@@ -154,6 +154,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 <p>Shiny apps internationalization: same app, multiple languages.</p>
+<p>We want to make data science more accessible and more inclusive for those people who don’t speak English as their first language. <code>shi18ny</code> enables you to translate your Shiny apps into 15 (and growing) different languages so that you can reach coders and non-coders around the world with little effort.</p>
 <p>Check the full documentation at <a href="http://shi18ny.datasketch.dev" class="uri">http://shi18ny.datasketch.dev</a></p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
@@ -161,26 +162,63 @@
 <p>You can install the development version from <a href="https://github.com/">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><html><pre class="r"><span class="co"># install.packages("devtools")</span>
 <span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"datasketch/shi18ny"</span>)</pre></html></div>
+<p>For more installation advice, for example if you want to contribute to the package, see the <code><a href="articles/getting-started.html">vignette("getting-started")</a></code> guide.</p>
 </div>
 <div id="your-first-multilanguage-shiny-app" class="section level2">
 <h2 class="hasAnchor">
 <a href="#your-first-multilanguage-shiny-app" class="anchor"></a>Your first multilanguage shiny app</h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
-<div class="sourceCode" id="cb2"><html><pre class="r">#library(shi18ny)
-## basic example code</pre></html></div>
-</div>
-<div id="configuration" class="section level2">
-<h2 class="hasAnchor">
-<a href="#configuration" class="anchor"></a>Configuration</h2>
-</div>
-<div id="add-custom-languages" class="section level2">
-<h2 class="hasAnchor">
-<a href="#add-custom-languages" class="anchor"></a>Add custom languages</h2>
-<p>Explore more examples.</p>
+<p>Here is a basic example which shows you how to use <code>shi18ny</code> in a basic Shiny app.</p>
+<div class="sourceCode" id="cb2"><html><pre class="r"><span class="kw">if</span> (<span class="fu"><a href="https://rdrr.io/r/base/interactive.html">interactive</a></span>()) {
+
+  <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"shiny"</span>)
+  <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"shi18ny"</span>)
+
+  <span class="no">ui</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span>(
+    <span class="no">tags</span>$<span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">h1</a></span>(<span class="st">"shiny internationalization"</span>),
+
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">br</a></span>(),
+    <span class="co"># Initialize shi18ny</span>
+    <span class="fu"><a href="reference/useShi18ny.html">useShi18ny</a></span>(),
+
+    <span class="co"># Language selector input</span>
+    <span class="fu"><a href="reference/langSelectorInput.html">langSelectorInput</a></span>(<span class="st">"lang"</span>, <span class="kw">position</span> <span class="kw">=</span> <span class="st">"fixed"</span>),
+
+    <span class="co"># UI elements</span>
+    <span class="co"># Text can be translated directly from the UI, using the ui_ function:</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">h1</a></span>(<span class="fu"><a href="reference/i18n.html">ui_</a></span>(<span class="st">"hello"</span>)),
+    <span class="co"># OR by using uiOutput:</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/htmlOutput.html">uiOutput</a></span>(<span class="st">"results"</span>)
+
+  )
+
+  <span class="no">server</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">input</span>, <span class="no">output</span>, <span class="no">session</span>) {
+    <span class="co"># Configure shi18ny</span>
+    <span class="no">i18n</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
+      <span class="kw">defaultLang</span> <span class="kw">=</span> <span class="st">"en"</span>,
+      <span class="kw">availableLangs</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"es"</span>, <span class="st">"en"</span>, <span class="st">"pt"</span>)
+    )
+
+    <span class="co"># Call language module to get currently selected language and save it in a reactive</span>
+    <span class="no">lang</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/callModule.html">callModule</a></span>(<span class="no">langSelector</span>, <span class="st">"lang"</span>, <span class="kw">i18n</span> <span class="kw">=</span> <span class="no">i18n</span>, <span class="kw">showSelector</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+
+    <span class="co"># Render translations by passing the text and the active (selected) language as the lang() parameter to the i_ function</span>
+    <span class="no">output</span>$<span class="no">results</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderUI.html">renderUI</a></span>({
+      <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
+        <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">h1</a></span>(<span class="fu"><a href="reference/i18n.html">i_</a></span>(<span class="st">"world"</span>, <span class="fu">lang</span>())),
+        <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">br</a></span>(),
+        <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">h4</a></span>(<span class="fu"><a href="reference/i18n.html">i_</a></span>(<span class="st">"language"</span>, <span class="fu">lang</span>()))
+        )
+      })
+  }
+
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html">shinyApp</a></span>(<span class="no">ui</span>, <span class="no">server</span>)
+
+}</pre></html></div>
 </div>
 <div id="roadmap" class="section level2">
 <h2 class="hasAnchor">
 <a href="#roadmap" class="anchor"></a>Roadmap</h2>
+<p>We are always looking to improve <code>shi18ny</code> to further promote the internationalization of data science. Here are some improvements/features we have on our list for upcoming releases. If you have any other suggestions for new features, please let us know by filing an issue as a ‘feature request’ on our GitHub page (see <code><a href="articles/contributing.html">vignette("contributing")</a></code> for details).</p>
 <ul>
 <li>Support RTL languages properly</li>
 <li>Add locale formatting for dates</li>
@@ -190,10 +228,20 @@
 <div id="faq" class="section level2">
 <h2 class="hasAnchor">
 <a href="#faq" class="anchor"></a>FAQ</h2>
+<div id="ive-spotted-a-bug-how-can-i-report-it" class="section level3">
+<h3 class="hasAnchor">
+<a href="#ive-spotted-a-bug-how-can-i-report-it" class="anchor"></a>I’ve spotted a bug, how can I report it?</h3>
+<p>If you’ve come across issues with the package, we’d greatly appreciate if you could file an issue on our GitHub page. See the <code><a href="articles/contributing.html">vignette("contributing")</a></code> guide on how to go about that.</p>
+</div>
 <div id="my-language-is-not-yet-supported-what-can-i-do-to-help" class="section level3">
 <h3 class="hasAnchor">
 <a href="#my-language-is-not-yet-supported-what-can-i-do-to-help" class="anchor"></a>My language is not yet supported, what can I do to help?</h3>
-<p>File an issue and make a pull request following the instructions in the vignette.</p>
+<p>If you are looking to translate your Shiny app into a language that doesn’t yet exist in <code>shi18ny</code> you can either make a feature request for this language on our GitHub page or help us add this language to the dictionary. In the <code><a href="articles/contributing.html">vignette("contributing")</a></code> we take you through the steps.</p>
+</div>
+<div id="my-language-exists-but-doesnt-recognize-certain-words-how-can-i-solve-this" class="section level3">
+<h3 class="hasAnchor">
+<a href="#my-language-exists-but-doesnt-recognize-certain-words-how-can-i-solve-this" class="anchor"></a>My language exists but doesn’t recognize certain words, how can I solve this?</h3>
+<p>If the language you are using for your translation is supported by <code>shi18ny</code> but there are certain words that aren’t translated (or that aren’t translated correctly) you can help by filing this as an issue or by helping us improve the dictionary yourself. The <code><a href="articles/contributing.html">vignette("contributing")</a></code> talks you through either of these options.</p>
 </div>
 </div>
 </div>
