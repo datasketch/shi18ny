@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Page not found (404) • shi18ny</title>
+<title>Language selector — langSelector • shi18ny</title>
 
 
 <!-- jquery -->
@@ -18,8 +18,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
-<link rel="stylesheet" href="https://shi18ny.datasketch.dev/bootstrap-toc.css">
-<script src="https://shi18ny.datasketch.dev/bootstrap-toc.js"></script>
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
@@ -33,15 +33,20 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="https://shi18ny.datasketch.dev/pkgdown.css" rel="stylesheet">
-<script src="https://shi18ny.datasketch.dev/pkgdown.js"></script>
+<link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script>
 
 
 
-  <link href="https://shi18ny.datasketch.dev/extra.css" rel="stylesheet">
-  <script src="https://shi18ny.datasketch.dev/extra.js"></script>
+  <link href="../extra.css" rel="stylesheet">
+  <script src="../extra.js"></script>
 
-<meta property="og:title" content="Page not found (404)" />
+<meta property="og:title" content="Language selector — langSelector" />
+<meta property="og:description" content="This Shiny module gets language that's currently selected in the language
+selector. It needs to be used in the
+Server to save the currently active language in a reactive. This reactive
+can then be passed to the i_ (TODO link to function documentation!)
+function to translate the text." />
 <meta property="og:image" content="https://shi18ny.datasketch.dev/reference/figures/card.png" />
 <meta property="og:image:alt" content="Pool noodles configured to form the word poolnoodlr" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -75,7 +80,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-title-body">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -87,7 +92,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="https://shi18ny.datasketch.dev/index.html">shi18ny</a>
+        <a class="navbar-link" href="../index.html">shi18ny</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
@@ -95,13 +100,13 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">
+  <a href="../index.html">
     <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -111,18 +116,18 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="articles/contributing.html">How to contribute</a>
+      <a href="../articles/contributing.html">How to contribute</a>
     </li>
     <li>
-      <a href="articles/getting-started.html">Getting started</a>
+      <a href="../articles/getting-started.html">Getting started</a>
     </li>
     <li>
-      <a href="articles/pull-request-guidelines.html">Pull Request Guidelines</a>
+      <a href="../articles/pull-request-guidelines.html">Pull Request Guidelines</a>
     </li>
   </ul>
 </li>
 <li>
-  <a href="news/index.html">Changelog</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -143,23 +148,96 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Page not found (404)</h1>
+    <h1>Language selector</h1>
+    <small class="dont-index">Source: <a href='https://github.com/datasketch/shi18ny/blob/master/R/modules.R'><code>R/modules.R</code></a></small>
+    <div class="hidden name"><code>langSelector.Rd</code></div>
     </div>
 
-Content not found. Please use links in the navbar.
+    <div class="ref-description">
+    <p>This Shiny module gets language that's currently selected in the language
+selector. It needs to be used in the
+Server to save the currently active language in a reactive. This reactive
+can then be passed to the <code>i_</code> (TODO link to function documentation!)
+function to translate the text.</p>
+    </div>
+
+    <pre class="usage"><span class='fu'>langSelector</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>, <span class='kw'>i18n</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>showSelector</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>i18n</th>
+      <td><p>List of language configurations;
+Options that can be set are:</p>
+<p><code>defaultLang</code> Default language used in Shiny app; default = "en"</p>
+<p><code>availableLangs</code> Language that can be chosen for translation in Shiny app;
+there are currently 15 available languages (see <strong>Available languages</strong>);
+defaults to all available languages</p>
+<p><code>localeDir</code> Directory to <code>yaml</code> files which contain custom keyword
+translations; default = "locale"</p>
+<p><code>fallbacks</code> List of fallback languages if translation for a word is not
+found in desired language; defaults to <strong>Default fallbacks</strong></p>
+<p><code>queryParameter</code> String to define query parameter if language to be set
+through URL; default = "lang"</p></td>
+    </tr>
+    <tr>
+      <th>showSelector</th>
+      <td><p>Boolean to specify if language selector should be
+displayed or not. Even if selector is not displayed, language can always
+be set by query parameter; default = "lang"</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>String of language code of currently selected languages.</p>
+    <h2 class="hasAnchor" id="available-languages"><a class="anchor" href="#available-languages"></a>Available languages</h2>
+
+    <p>There are currently 15 languages available for
+translation:</p><table class='table'>
+<tr><td>code</td><td>language</td></tr>
+<tr><td>ar</td><td>Arabic</td></tr>
+<tr><td>ca</td><td>Catalan</td></tr>
+<tr><td>da</td><td>Danish</td></tr>
+<tr><td>de</td><td>German</td></tr>
+<tr><td>en</td><td>English</td></tr>
+<tr><td>es</td><td>Spanish</td></tr>
+<tr><td>fr</td><td>French</td></tr>
+<tr><td>he</td><td>Hebrew</td></tr>
+<tr><td>hi</td><td>Hindi</td></tr>
+<tr><td>it</td><td>Italian</td></tr>
+<tr><td>pt</td><td>Portuguese</td></tr>
+<tr><td>pt_BR</td><td>Portuguese (Brazil)</td></tr>
+<tr><td>ru</td><td>Russian</td></tr>
+<tr><td>sv</td><td>Swedish</td></tr>
+<tr><td>zh_CN</td><td>Chinese</td></tr>
+</table>
+
+
+    <h2 class="hasAnchor" id="default-fallbacks"><a class="anchor" href="#default-fallbacks"></a>Default fallbacks</h2>
+
+    <p>If no fallback languages are specified,
+translations automatically fall back onto the following languages.</p><table class='table'>
+<tr><td>original language</td><td>fallback language</td></tr>
+<tr><td>es</td><td>pt</td></tr>
+<tr><td>pt</td><td>es</td></tr>
+<tr><td>fr</td><td>pt</td></tr>
+<tr><td>de</td><td>nl</td></tr>
+<tr><td>nl</td><td>de</td></tr>
+</table>
+
+
 
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
-
 </div>
-
 
 
       <footer>

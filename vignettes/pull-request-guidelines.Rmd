@@ -1,0 +1,16 @@
+---
+title: "Pull Request Guidelines"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Pull Request Guidelines}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Before submitting a pull request, please make sure that it meets the following guidelines:
+
+1. If the pull requests implements a new feature, the documentation should be updated. To be in line with the current package documentation please do this in the format of [Roxygen2 documentation](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html).
+2. If the pull request is a bug fix or implements a new feature, new tests should be included and all tests should have passed before submitting the pull request. You can do this by pressing Cmd/Ctrl + Shift T if you're using R Studio, otherwise run `devtools::test()`.
+3. For all pull requests, please include a top-line description of your changes.
+
+

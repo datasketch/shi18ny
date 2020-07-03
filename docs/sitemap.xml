@@ -4,9 +4,33 @@
     <loc>https://shi18ny.datasketch.dev/index.html</loc>
   </url>
   <url>
+    <loc>https://shi18ny.datasketch.dev/reference/i18n.html</loc>
+  </url>
+  <url>
+    <loc>https://shi18ny.datasketch.dev/reference/langSelector.html</loc>
+  </url>
+  <url>
+    <loc>https://shi18ny.datasketch.dev/reference/langSelectorInput.html</loc>
+  </url>
+  <url>
+    <loc>https://shi18ny.datasketch.dev/reference/selectImageInput.html</loc>
+  </url>
+  <url>
+    <loc>https://shi18ny.datasketch.dev/reference/selectLangInput.html</loc>
+  </url>
+  <url>
+    <loc>https://shi18ny.datasketch.dev/reference/updateSelectImageInput.html</loc>
+  </url>
+  <url>
+    <loc>https://shi18ny.datasketch.dev/reference/useShi18ny.html</loc>
+  </url>
+  <url>
     <loc>https://shi18ny.datasketch.dev/articles/contributing.html</loc>
   </url>
   <url>
     <loc>https://shi18ny.datasketch.dev/articles/getting-started.html</loc>
+  </url>
+  <url>
+    <loc>https://shi18ny.datasketch.dev/articles/pull-request-guidelines.html</loc>
   </url>
 </urlset>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • shi18ny</title>
+<title>Translate text — i_ • shi18ny</title>
 
 
 <!-- jquery -->
@@ -41,7 +41,8 @@
   <link href="../extra.css" rel="stylesheet">
   <script src="../extra.js"></script>
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Translate text — i_" />
+<meta property="og:description" content="Translate strings, vectors or lists in the Server of a Shiny app." />
 <meta property="og:image" content="https://shi18ny.datasketch.dev/reference/figures/card.png" />
 <meta property="og:image:alt" content="Pool noodles configured to form the word poolnoodlr" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -75,7 +76,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -111,13 +112,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/contributing.html">How to contribute</a>
+      <a href="../articles/contributing.html">Contributing translations and new languages</a>
     </li>
     <li>
       <a href="../articles/getting-started.html">Getting started</a>
-    </li>
-    <li>
-      <a href="../articles/pull-request-guidelines.html">Pull Request Guidelines</a>
     </li>
   </ul>
 </li>
@@ -145,25 +143,95 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/datasketch/shi18ny/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+    <h1>Translate text</h1>
+    <small class="dont-index">Source: <a href='https://github.com/datasketch/shi18ny/blob/master/R/i18n.R'><code>R/i18n.R</code></a></small>
+    <div class="hidden name"><code>i_.Rd</code></div>
     </div>
 
-    <div id="shi18ny-010" class="section level1">
-<h1 class="page-header" data-toc-text="0.1.0">
-<a href="#shi18ny-010" class="anchor"></a>shi18ny 0.1.0</h1>
-<ul>
-<li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
-</ul>
-</div>
-  </div>
+    <div class="ref-description">
+    <p>Translate strings, vectors or lists in the Server of a Shiny app.</p>
+    </div>
 
+    <pre class="usage"><span class='fu'>i_</span>(<span class='no'>str</span>, <span class='kw'>lang</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>i18n</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>markdown</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>keys</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"name"</span>, <span class='st'>"label"</span>))</pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>str</th>
+      <td><p>A string, vector or list to be translated.</p></td>
+    </tr>
+    <tr>
+      <th>lang</th>
+      <td><p>Code for the language that the original language should be
+translated into.</p></td>
+    </tr>
+    <tr>
+      <th>i18n</th>
+      <td><p>List of language configurations. Options that can be set
+are:</p>
+<p><code>defaultLang</code> Default language used in Shiny app</p>
+<p><code>availableLangs</code> Language that can be chosen for translation in Shiny app;
+there are currently 15 available languages</p>
+<p><code>localeDir</code> Directory to <code>yaml</code> files which contain custom keyword
+translations</p>
+<p><code>fallbacks</code> List of fallback languages if translation for a word is not
+found in desired language</p>
+<p><code>queryParameter</code> String to define query parameter if language to be set
+through URL</p></td>
+    </tr>
+    <tr>
+      <th>markdown</th>
+      <td><p>TODO</p></td>
+    </tr>
+    <tr>
+      <th>keys</th>
+      <td><p>If <code>str</code> is a list this is a string (or a vector of strings)
+specifying which key(s) of the list to translate.</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Translation of input text in the same format as the input.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>There are currently 15 languages available for translation:</p><table class='table'>
+<tr><td>code</td><td>language</td></tr>
+<tr><td>ar</td><td>Arabic</td></tr>
+<tr><td>ca</td><td>Catalan</td></tr>
+<tr><td>da</td><td>Danish</td></tr>
+<tr><td>de</td><td>German</td></tr>
+<tr><td>en</td><td>English</td></tr>
+<tr><td>es</td><td>Spanish</td></tr>
+<tr><td>fr</td><td>French</td></tr>
+<tr><td>he</td><td>Hebrew</td></tr>
+<tr><td>hi</td><td>Hindi</td></tr>
+<tr><td>it</td><td>Italian</td></tr>
+<tr><td>pt</td><td>Portuguese</td></tr>
+<tr><td>pt_BR</td><td>Portuguese (Brazil)</td></tr>
+<tr><td>ru</td><td>Russian</td></tr>
+<tr><td>sv</td><td>Swedish</td></tr>
+<tr><td>zh_CN</td><td>Chinese</td></tr>
+</table>
+
+
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>i_</span>(<span class='st'>"hello"</span>, <span class='kw'>lang</span> <span class='kw'>=</span> <span class='st'>"de"</span>)</div><div class='output co'>#&gt; <span class='message'>locale directory does not exists, using default translations</span></div><div class='output co'>#&gt; [1] "Hallo"</div><div class='input'>
+<span class='fu'>i_</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"hello"</span>, <span class='st'>"world"</span>), <span class='kw'>lang</span> <span class='kw'>=</span> <span class='st'>"de"</span>)</div><div class='output co'>#&gt; <span class='message'>locale directory does not exists, using default translations</span></div><div class='output co'>#&gt; [1] "Hallo" NA     </div><div class='input'>
+<span class='fu'>i_</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"hello"</span>, <span class='kw'>translate</span> <span class='kw'>=</span> <span class='st'>"world"</span>), <span class='kw'>lang</span> <span class='kw'>=</span> <span class='st'>"es"</span>, <span class='kw'>keys</span> <span class='kw'>=</span> <span class='st'>"translate"</span>)</div><div class='output co'>#&gt; <span class='message'>locale directory does not exists, using default translations</span></div><div class='output co'>#&gt; $id
+#&gt; [1] "hello"
+#&gt; 
+#&gt; $translate
+#&gt; [1] "mundo"
+#&gt; </div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
-
 </div>
 
 
