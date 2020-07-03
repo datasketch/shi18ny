@@ -69,6 +69,11 @@ if (interactive()) {
     # Call language module to get currently selected language and save it in a reactive
     lang <- callModule(langSelector, "lang", i18n = i18n, showSelector = TRUE)
     
+    # Update UI translation
+    observeEvent(lang(),{
+      uiLangUpdate(input$shi18ny_ui_classes, lang())
+      })
+    
     # Render translations by passing the text and the active (selected) language as the lang() parameter to the i_ function
     output$results <- renderUI({
       list(
