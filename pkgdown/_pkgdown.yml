@@ -1,7 +1,7 @@
 destination: docs
 home:
   title: An R package for multilingual shiny apps
-  description: Make shiny apps in multiples languages.
+  description: Make shiny apps in multiple languages.
 url: https://shi18ny.datasketch.dev
 template:
   params:
