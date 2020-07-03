@@ -20,6 +20,8 @@ knitr::opts_chunk$set(
 
 Shiny apps internationalization: same app, multiple languages.
 
+We want to make data science more accessible and more inclusive for those people who don't speak English as their first language. `shi18ny` enables you to translate your Shiny apps into 15 (and growing) different languages so that you can reach coders and non-coders around the world with little effort. 
+
 Check the full documentation at http://shi18ny.datasketch.dev
 
 
@@ -31,26 +33,65 @@ You can install the development version from [GitHub](https://github.com/) with:
 # install.packages("devtools")
 devtools::install_github("datasketch/shi18ny")
 ```
+For more installation advice, for example if you want to contribute to the package, see the `vignette("getting-started")` guide.
+
 ## Your first multilanguage shiny app
 
-This is a basic example which shows you how to solve a common problem:
+Here is a basic example which shows you how to use `shi18ny` in a basic Shiny app. 
 
 ```{r example}
-#library(shi18ny)
-## basic example code
+if (interactive()) {
+  
+  library("shiny")
+  library("shi18ny")
+  
+  ui <- fluidPage(
+    tags$h1("shiny internationalization"),
+    
+    br(),
+    # Initialize shi18ny
+    useShi18ny(),
+    
+    # Language selector input
+    langSelectorInput("lang", position = "fixed"),
+    
+    # UI elements
+    # Text can be translated directly from the UI, using the ui_ function:
+    h1(ui_("hello")),
+    # OR by using uiOutput:
+    uiOutput("results")
+    
+  )
+  
+  server <- function(input, output, session) {
+    # Configure shi18ny
+    i18n <- list(
+      defaultLang = "en",
+      availableLangs = c("es", "en", "pt")
+    )
+    
+    # Call language module to get currently selected language and save it in a reactive
+    lang <- callModule(langSelector, "lang", i18n = i18n, showSelector = TRUE)
+    
+    # Render translations by passing the text and the active (selected) language as the lang() parameter to the i_ function
+    output$results <- renderUI({
+      list(
+        h1(i_("world", lang())), 
+        br(), 
+        h4(i_("language", lang()))
+        )
+      })
+  }
+  
+  shinyApp(ui, server)
+  
+}
 ```
 
 
-## Configuration
-
-
-
-## Add custom languages
-
-Explore more examples.
-
-
 ## Roadmap
+
+We are always looking to improve `shi18ny` to further promote the internationalization of data science. Here are some improvements/features we have on our list for upcoming releases. If you have any other suggestions for new features, please let us know by filing an issue as a 'feature request' on our GitHub page (see `vignette("contributing")` for details).
 
 - Support RTL languages properly
 - Add locale formatting for dates
@@ -59,10 +100,17 @@ Explore more examples.
 
 ## FAQ
 
+### I've spotted a bug, how can I report it?
+
+If you've come across issues with the package, we'd greatly appreciate if you could file an issue on our GitHub page. See the `vignette("contributing")` guide on how to go about that. 
+
 ### My language is not yet supported, what can I do to help?
 
-File an issue and make a pull request following the instructions in the vignette.
+If you are looking to translate your Shiny app into a language that doesn't yet exist in `shi18ny` you can either make a feature request for this language on our GitHub page or help us add this language to the dictionary. In the `vignette("contributing")` we take you through the steps.
 
+### My language exists but doesn't recognize certain words, how can I solve this?
+
+If the language you are using for your translation is supported by `shi18ny` but there are certain words that aren't translated (or that aren't translated correctly) you can help by filing this as an issue or by helping us improve the dictionary yourself. The `vignette("contributing")` talks you through either of these options. 
 
 
 # Acknowledgements
@@ -71,7 +119,3 @@ File an issue and make a pull request following the instructions in the vignette
 
 Country Flags taken from https://github.com/hjnilsson/country-flags
 Catalonia flag from [wikipedia](https://meta.wikimedia.org/wiki/File:Flag_of_Catalonia.svg)
-
-
-
-
