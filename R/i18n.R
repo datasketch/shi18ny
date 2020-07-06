@@ -82,7 +82,12 @@
 #' @export
 i_ <- function(str, lang = NULL, i18n = NULL, markdown = FALSE,
                keys = c("name","label")){
-  if(is.null(i18n)) i18n <- i18nLoad()
+
+  i18n_is_null <- is.null(i18n)
+  i18n_not_yet_processed <- !(is.null(i18n) | (".config" %in% names(i18n)))
+
+  if(i18n_is_null | i18n_not_yet_processed) i18n <- i18nLoad(i18n)
+
   lang <- lang %||% "en"
   if(is.null(str)) return()
 
