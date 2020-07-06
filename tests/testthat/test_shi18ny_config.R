@@ -26,7 +26,7 @@ test_that("i18n Config",{
   # expect_equal(selectInList(l,strs), c("common", "language"))
 
 
-  localeDir <- system.file("examples/locale",package = "shi18ny")
+  localeDir <- system.file("tests", "testthat", "locale_test", package = "shi18ny")
   opts <- list(
     localeDir = localeDir,
     availableLangs = c("en","es")
