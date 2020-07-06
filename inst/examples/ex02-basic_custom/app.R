@@ -11,7 +11,7 @@ ui <- fluidPage(
 server <- function(input, output, session) {
   i18n <- list(
     defaultLang = "en",
-    availableLangs = c("es","en", "de")
+    availableLangs = c("en", "de")
   )
   lang <- callModule(langSelector,"lang", i18n = i18n, showSelector = TRUE)
   observeEvent(lang(),{
@@ -20,11 +20,9 @@ server <- function(input, output, session) {
 
   output$results <- renderUI({
     list(
-      h1(i_("world",lang())),
+      h1(i_("how_are_you",lang())),
       br(),
-      h4(i_("language",lang()), lang()),
-      br(),
-      h4(i_("choose_file"), lang())
+      h4(i_("language",lang()), lang())
     )
   })
 
