@@ -5,13 +5,12 @@ test_that("i18n Config",{
   # Custom translations
 
   localeDir <- system.file("tests", "testthat", "locale_test", package = "shi18ny")
-  opts <- list(
+  i18n <- list(
     localeDir = localeDir,
     defaultLang = "es",
     fallbacks = list("es" = "en")
   )
-  config <- i18nConfig(opts)
-  i18n <- i18nLoad(opts)
+  config <- i18nConfig(i18n)
 
   expect_equal(i_("myslang.hi","es",i18n), "Quiubo")
   expect_equal(i_("myslang.hi","en",i18n), "Zup")

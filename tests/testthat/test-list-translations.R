@@ -2,13 +2,12 @@
 test_that("list translations work",{
 
   localeDir <- system.file("tests", "testthat", "locale_test", package = "shi18ny")
-  opts <- list(
+  i18n <- list(
     localeDir = localeDir,
     defaultLang = "es",
     fallbacks = list("es" = "en")
   )
-  config <- i18nConfig(opts)
-  i18n <- i18nLoad(opts)
+  config <- i18nConfig(i18n)
 
   l <- list(label = "hello", numbers = "abort",
             custom_text = "myslang.hi",
