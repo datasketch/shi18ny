@@ -4,7 +4,7 @@ runExample <- function(example_name = NULL){
 
   valid_examples <- list.files(rootDir)
 
-  valid_examples_string <- paste0("'", paste0(existing_examples, collapse = "', '"), "'.")
+  valid_examples_string <- paste0("'", paste0(valid_examples, collapse = "', '"), "'.")
 
   if(is.null(example_name)) return(paste0("Valid examples are ", valid_examples_string))
 
