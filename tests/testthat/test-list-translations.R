@@ -1,7 +1,7 @@
 
 test_that("list translations work",{
 
-  localeDir <- system.file("examples/locale",package = "shi18ny")
+  localeDir <- system.file("tests", "testthat", "locale_test", package = "shi18ny")
   opts <- list(
     localeDir = localeDir,
     defaultLang = "es",
