@@ -153,6 +153,11 @@
     <span class="co"># Call language module to get currently selected language and save it in a reactive</span>
     <span class="no">lang</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/callModule.html">callModule</a></span>(<span class="no">langSelector</span>, <span class="st">"lang"</span>, <span class="kw">i18n</span> <span class="kw">=</span> <span class="no">i18n</span>, <span class="kw">showSelector</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
 
+    <span class="co"># Update UI translation</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent</a></span>(<span class="fu">lang</span>(),{
+      <span class="fu"><a href="reference/uiLangUpdate.html">uiLangUpdate</a></span>(<span class="no">input</span>$<span class="no">shi18ny_ui_classes</span>, <span class="fu">lang</span>())
+      })
+
     <span class="co"># Render translations by passing the text and the active (selected) language as the lang() parameter to the i_ function</span>
     <span class="no">output</span>$<span class="no">results</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderUI.html">renderUI</a></span>({
       <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(

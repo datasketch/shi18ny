@@ -4,6 +4,9 @@
     <loc>https://shi18ny.datasketch.dev/index.html</loc>
   </url>
   <url>
+    <loc>https://shi18ny.datasketch.dev/reference/availableLangs.html</loc>
+  </url>
+  <url>
     <loc>https://shi18ny.datasketch.dev/reference/i18n.html</loc>
   </url>
   <url>
@@ -13,10 +16,16 @@
     <loc>https://shi18ny.datasketch.dev/reference/langSelectorInput.html</loc>
   </url>
   <url>
+    <loc>https://shi18ny.datasketch.dev/reference/runExample.html</loc>
+  </url>
+  <url>
     <loc>https://shi18ny.datasketch.dev/reference/selectImageInput.html</loc>
   </url>
   <url>
     <loc>https://shi18ny.datasketch.dev/reference/selectLangInput.html</loc>
+  </url>
+  <url>
+    <loc>https://shi18ny.datasketch.dev/reference/uiLangUpdate.html</loc>
   </url>
   <url>
     <loc>https://shi18ny.datasketch.dev/reference/updateSelectImageInput.html</loc>
