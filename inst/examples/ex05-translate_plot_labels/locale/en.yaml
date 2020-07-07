@@ -1,0 +1,4 @@
+title: Effect of Vitamin C on Tooth growth in Guinea pigs
+dose: Dose in milligrams (0.5, 1, 2)
+len: Tooth length
+annotate: Data derived from ToothGrowth data sets are used.
