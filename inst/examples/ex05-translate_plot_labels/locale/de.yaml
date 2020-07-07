@@ -1,0 +1,4 @@
+title: Wirkung von Vitamin C auf das Zahnwachstum bei Meerschweinchen
+dose: Dosis in Milligramm (0,5, 1, 2)
+len: Zahnlänge
+annotate: Die verwendeten Daten sind aus den ToothGrowth-Datensätzen abgeleitet.
