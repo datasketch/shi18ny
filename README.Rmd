@@ -24,6 +24,12 @@ We want to make data science more accessible and more inclusive for those people
 
 Check the full documentation at http://shi18ny.datasketch.dev
 
+## Languages
+
+Currently, `shi18ny` supports the following 15 languages: Arabic, Catalan, Chinese, Danish, German, English, Spanish, French, Hebrew, Hindi, Italian, Portuguese, Portuguese (Brazil), Russian, and Swedish. 
+
+If the language you're looking for is not yet available, see the `vignette("contributing")` on how you can help us improve and extend the selection languages.
+
 
 ## Installation
 
