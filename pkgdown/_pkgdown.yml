@@ -25,11 +25,17 @@ reference:
 - contents:
   - i_
   - ui_
-- title: Select language
+- title: Select/update language
   desc: Select language for translation of text in Shiny app.
 - contents:
   - langSelectorInput
   - langSelector
+  - uiLangUpdate
+- title: Misc
+  desc: Package info and examples
+- contents:
+  - availableLangs
+  - runExample
 authors:
   Datasketch:
     href: "http://institution.com"
