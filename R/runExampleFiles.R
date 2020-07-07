@@ -1,3 +1,9 @@
+#' Run one of the `shi18ny` examples.
+#'
+#' For a list of available examples, run `shi18ny::runExample()`.
+#'
+#' @param example_name Name of the example
+#'
 #' @export
 runExample <- function(example_name = NULL){
   rootDir <- system.file("examples", package = "shi18ny")

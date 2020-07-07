@@ -2,39 +2,37 @@
 #'
 #' Translate strings, vectors or lists in the Server of a Shiny app. There are
 #' currently 15 languages available for translation (see **Available languages**
-#' below).
-#' Note that the `i_` function should be used within the Server of the app and
-#' the `ui_` function should be used in the UI.
+#' below). Note that the `i_` function should be used within the Server of the
+#' app and the `ui_` function should be used in the UI.
 #'
 #' @name i18n
 #'
 #' @param str A string, vector or list to be translated.
 #' @param lang Code for the language that the original language should be
 #'   translated into.
-#' @param i18n List of language configurations; can only be set for `i_`.
-#'   TODO add default configurations!
+#' @param i18n List of language configurations, can only be set for `i_`.
 #'   Options that can be set are:
 #'
 #'   `defaultLang` Default language used in Shiny app; default = "en"
 #'
 #'   `availableLangs` Language that can be chosen for translation in Shiny app;
-#'   there are currently 15 available languages (see **Available languages**);
-#'   defaults to all available languages
+#'   there are currently 15 **Available languages** (see below); defaults to
+#'   all.
 #'
 #'   `localeDir` Directory to `yaml` files which contain custom keyword
 #'   translations; default = "locale"
 #'
 #'   `fallbacks` List of fallback languages if translation for a word is not
-#'   found in desired language; defaults to **Default fallbacks**
+#'   found in desired language; defaults to **Default fallbacks** (see below)
 #'
 #'   `queryParameter` String to define query parameter if language to be set
 #'   through URL; default = "lang"
 #'
-#' @param markdown TODO; can only be set for `i_`.
+#' @param markdown Transform markdown text to HTML, can only be set for `i_`;
+#'   default = FALSE
 #'
 #' @param keys If `str` is a list this is a string (or a vector of strings)
-#'   specifying which key(s) of the list to translate; can only be set for
-#'   `i_`.
+#'   specifying which key(s) of the list to translate; can only be set for `i_`.
 #'
 #'
 #' @return Translation of input text in the same format as the input.
@@ -74,9 +72,17 @@
 #' @examples
 #' i_("hello", lang = "de")
 #'
-#' i_(c("hello", "world"), lang = "de")
+#' i_(c("hello", "world"), lang = "es")
 #'
-#' i_(list(id = "hello", translate = "world"), lang = "es", keys = "translate")
+#' i_(list(id = "hello", translate = "world"), lang = "pt", keys = "translate")
+#'
+#' \dontrun{
+#' ui <- fluidPage(
+#' useShi18ny(),
+#' langSelectorInput("lang", position = "fixed"),
+#' h1(ui_("hello")),
+#' )
+#' }
 
 #' @rdname i18n
 #' @export
@@ -136,17 +142,16 @@ i_list <- function(l, lang, i18n = NULL, keys = NULL){
 }
 
 
-
 #' @rdname i18n
 #' @export
 ui_ <- function(string, lang = NULL){
   tags$span(class=paste("i18n", gsub("\\.","-",string)), i_(string, lang))
 }
 
-#' Initialise shi18ny
+#' Initialize shi18ny
 #'
 #' This function needs to be included in the UI of the Shiny app. It runs the
-#' required client side javascript code to update strings when currently
+#' required client side javascript code to update strings when the currently
 #' active (selected) language changes.
 
 #' @export
@@ -171,6 +176,29 @@ useShi18ny <- function(){
   )
 }
 
+#' Update language in UI translations
+#'
+#' This function needs to be included in the Server of the Shiny app if if text
+#' is translated in the UI of the app using the \code{\link{ui_}} function. It
+#' makes sure the language used by \code{\link{ui_}} to do the translation is
+#' updated when the active (selected) language changes.
+#'
+#' @param classes UI classes; pass `input$shi18ny_ui_classes` to refer to all
+#'   instances of \code{\link{ui_}}.
+#' @param lang Code for the language that the original language should be
+#'   translated into.
+#'
+#'   In the following example, `lang()` is the reactive value created by the
+#'   \code{\link{langSelector}} function.
+#'
+#' @examples
+#' \dontrun{
+#' observeEvent(lang(),{
+#'   uiLangUpdate(classes = input$shi18ny_ui_classes,
+#'                lang = lang())
+#'   })
+#' }
+
 #' @export
 uiLangUpdate <- function(classes, lang){
   if(is.null(classes)) return()
@@ -181,6 +209,11 @@ uiLangUpdate <- function(classes, lang){
   })
 }
 
+
+#' Display available languages
+#'
+#' Call this function to display the language code for languages currently
+#' supported by `shi18ny`.
 
 #' @export
 availableLangs <- function(localeDir = NULL){
