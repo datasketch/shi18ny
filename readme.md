@@ -17,6 +17,8 @@ with little effort.
 
 Check the full documentation at <http://shi18ny.datasketch.dev>
 
+![](data-raw/hola-mundo-shi18ny.gif)
+
 ## Languages
 
 Currently, `shi18ny` supports the following 15 languages: Arabic,
