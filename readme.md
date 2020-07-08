@@ -17,7 +17,7 @@ with little effort.
 
 Check the full documentation at <http://shi18ny.datasketch.dev>
 
-![](data-raw/hola-mundo-shi18ny.gif)
+![](man/figures/hola-mundo-shi18ny.gif)
 
 ## Languages
 

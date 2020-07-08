@@ -8,7 +8,7 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figures/README-",
+  fig.path = "man/figures/",
   out.width = "100%"
 )
 ```
@@ -24,7 +24,7 @@ We want to make data science more accessible and more inclusive for those people
 
 Check the full documentation at http://shi18ny.datasketch.dev
 
-![](data-raw/hola-mundo-shi18ny.gif)
+![](man/figures/hola-mundo-shi18ny.gif)
 
 ## Languages
 
