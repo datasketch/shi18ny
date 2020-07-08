@@ -1,0 +1,7 @@
+title: Mapeador COVID-19
+subtitle: Cifras absolutas de casos confirmados de COVID-19 por país
+annotate: Datos del Corona Center for Systems Science and Engineering (CSSE) de la Universidad Johns Hopkins (JHU)
+status: A partir del 12/04/2020
+internationalize: Internacionaliza tus mapas Shiny con shi18ny
+country: País
+cases: Casos confirmados
