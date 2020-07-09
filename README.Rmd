@@ -101,6 +101,13 @@ if (interactive()) {
 }
 ```
 
+## More examples
+
+You can find more examples by running `shi18ny::runExample()` after installing the package. This will show you the names of the examples that are available, which can then be run with the same function.
+
+For example, if you run `shi18ny::runExample("ex06-translate_covid_viz")` you can see how `shi18ny` can be used to translate a map of the world showing confirmed cases of COVID-19 by country (as of 08/07/20).
+
+![](man/figures/covid-map-shi18ny.gif)
 
 ## Roadmap
 
