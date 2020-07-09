@@ -101,6 +101,13 @@ if (interactive()) {
 }
 ```
 
+## More examples
+
+You can find more examples by running `shi18ny::runExample()` after installing the package. This will show you the names of the examples that are available.
+
+For example, you can run `shi18ny::runExample("ex06-translate_covid_viz")` to see how `shi18ny` can be used to translate a map of the world showing confirmed cases of COVID-19 by country (as of 08/07/20).
+
+![](man/figures/covid-map-shi18ny.gif)
 
 ## Roadmap
 
@@ -109,6 +116,15 @@ We are always looking to improve `shi18ny` to further promote the internationali
 - Support RTL languages properly
 - Add locale formatting for dates
 - ...
+
+## Other internationalization packages
+
+If you're interested in other R packages around the topic of internationalization in R, have a look at the following GitHub pages:
+
+- [shiny.i18n](https://github.com/Appsilon/shiny.i18n) (for more Shiny internationalization)
+- [traduire](https://github.com/reside-ic/traduire) (for translations outside of Shiny apps)
+- [i18n](https://github.com/rich-iannone/i18n/) (to get localized variants of dates, times, and currencies)
+- [d3.format](https://github.com/dreamRs/d3.format) (to format numbers for human consumption)
 
 
 ## FAQ

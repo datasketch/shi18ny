@@ -1,7 +1,7 @@
 title: COVID-19 mapper
-subtitle: Absolute numbers of confirmed cases of COVID-19 by country
+subtitle: Confirmed cases<br>of COVID-19<br>in absolute numbers
 annotate: Data from the Corona Center for Systems Science and Engineering (CSSE) at Johns Hopkins University (JHU)
-status: Dated 12/04/2020
+status: Dated
 internationalize: Internationalize your Shiny maps with shi18ny
 country: Country
 cases: Confirmed cases
