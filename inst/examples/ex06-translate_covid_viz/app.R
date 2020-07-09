@@ -21,7 +21,7 @@ ui <- fluidPage(
   h3(ui_("internationalize")),
   hr(),
   fluidRow(
-    column(6,
+    column(12,
            leafletOutput(outputId = "world_map")
     )),
   hr(),
@@ -45,16 +45,21 @@ server <- function(input, output) {
 
   output$world_map <- renderLeaflet({
 
-    country = i_("country", lang())
-    cases = i_("cases", lang())
+    # translate labels
+    country <- i_("country", lang())
+    cases <- i_("cases", lang())
+    title <- i_("title", lang())
+    subtitle <- i_("subtitle", lang())
 
     lflt_choropleth_Gcd(data,
                         map_tiles = "CartoDB",
                         tooltip = paste0("<b>",country,":</b> {",lang(),"} </br> <b>",cases,":</b> {confirmed}"),
-                        palette_colors = c("#99f2c8", "#1f4037"),
-                        branding_include = TRUE,
-                        title = i_("title", lang()),
-                        subtitle = i_("subtitle", lang())
+                        palette_colors = c("#92a8d1", "#034f84"),
+                        branding_include = FALSE,
+                        title = title,
+                        title_color = "#f7786b",
+                        subtitle = subtitle,
+                        subtitle_color = "#f7786b"
                         )
     })
 

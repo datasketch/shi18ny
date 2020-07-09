@@ -1,5 +1,5 @@
 title: COVID-19-Mapper
-subtitle: Bestätigte Fälle von COVID-19 nach Land in absoluten Zahlen
+subtitle: Bestätigte Fälle<br>von COVID-19<br>in absoluten Zahlen
 annotate: Daten vom Corona Center for Systems Science and Engineering (CSSE) an der Johns Hopkins Universität (JHU)
 status: Stand
 internationalize: Internationalisiere deine Shiny-Weltkarte mit shi18ny
