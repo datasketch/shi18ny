@@ -43,10 +43,9 @@
 
 <meta property="og:title" content="Language selector — langSelector" />
 <meta property="og:description" content="This Shiny module gets language that's currently selected in the language
-selector. It needs to be used in the
-Server to save the currently active language in a reactive. This reactive
-can then be passed to the i_ (TODO link to function documentation!)
-function to translate the text." />
+selector. It needs to be used in the Server to save the currently active
+(selected) language in a reactive. This reactive can then be passed to the
+i_ function to translate the text." />
 <meta property="og:image" content="https://shi18ny.datasketch.dev/reference/figures/card.png" />
 <meta property="og:image:alt" content="Pool noodles configured to form the word poolnoodlr" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -157,10 +156,9 @@ function to translate the text." />
 
     <div class="ref-description">
     <p>This Shiny module gets language that's currently selected in the language
-selector. It needs to be used in the
-Server to save the currently active language in a reactive. This reactive
-can then be passed to the <code>i_</code> (TODO link to function documentation!)
-function to translate the text.</p>
+selector. It needs to be used in the Server to save the currently active
+(selected) language in a reactive. This reactive can then be passed to the
+<code><a href='i18n.html'>i_</a></code> function to translate the text.</p>
     </div>
 
     <pre class="usage"><span class='fu'>langSelector</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>, <span class='kw'>i18n</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>showSelector</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
@@ -170,16 +168,16 @@ function to translate the text.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>i18n</th>
-      <td><p>List of language configurations;
+      <td><p>List of language configurations; can only be set for <code>i_</code>.
 Options that can be set are:</p>
 <p><code>defaultLang</code> Default language used in Shiny app; default = "en"</p>
 <p><code>availableLangs</code> Language that can be chosen for translation in Shiny app;
-there are currently 15 available languages (see <strong>Available languages</strong>);
-defaults to all available languages</p>
+there are currently 15 <strong>Available languages</strong> (see below);
+defaults to all.</p>
 <p><code>localeDir</code> Directory to <code>yaml</code> files which contain custom keyword
 translations; default = "locale"</p>
 <p><code>fallbacks</code> List of fallback languages if translation for a word is not
-found in desired language; defaults to <strong>Default fallbacks</strong></p>
+found in desired language; defaults to <strong>Default fallbacks</strong> (see below)</p>
 <p><code>queryParameter</code> String to define query parameter if language to be set
 through URL; default = "lang"</p></td>
     </tr>
@@ -231,6 +229,14 @@ translations automatically fall back onto the following languages.</p><table cla
 
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='no'>i18n</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+  <span class='kw'>defaultLang</span> <span class='kw'>=</span> <span class='st'>"en"</span>,
+  <span class='kw'>availableLangs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"en"</span>, <span class='st'>"de"</span>)
+)
+<span class='no'>lang</span> <span class='kw'>&lt;-</span> <span class='fu'>callModule</span>(<span class='no'>langSelector</span>,<span class='st'>"lang"</span>, <span class='kw'>i18n</span> <span class='kw'>=</span> <span class='no'>i18n</span>, <span class='kw'>showSelector</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

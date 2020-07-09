@@ -44,9 +44,8 @@
 <meta property="og:title" content="Translate text — i18n" />
 <meta property="og:description" content="Translate strings, vectors or lists in the Server of a Shiny app. There are
 currently 15 languages available for translation (see Available languages
-below).
-Note that the i_ function should be used within the Server of the app and
-the ui_ function should be used in the UI." />
+below). Note that the i_ function should be used within the Server of the
+app and the ui_ function should be used in the UI." />
 <meta property="og:image" content="https://shi18ny.datasketch.dev/reference/figures/card.png" />
 <meta property="og:image:alt" content="Pool noodles configured to form the word poolnoodlr" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -158,9 +157,8 @@ the ui_ function should be used in the UI." />
     <div class="ref-description">
     <p>Translate strings, vectors or lists in the Server of a Shiny app. There are
 currently 15 languages available for translation (see <strong>Available languages</strong>
-below).
-Note that the <code>i_</code> function should be used within the Server of the app and
-the <code>ui_</code> function should be used in the UI.</p>
+below). Note that the <code>i_</code> function should be used within the Server of the
+app and the <code>ui_</code> function should be used in the UI.</p>
     </div>
 
     <pre class="usage"><span class='fu'>i_</span>(<span class='no'>str</span>, <span class='kw'>lang</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>i18n</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>markdown</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>keys</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"name"</span>, <span class='st'>"label"</span>))
@@ -181,29 +179,28 @@ translated into.</p></td>
     </tr>
     <tr>
       <th>i18n</th>
-      <td><p>List of language configurations; can only be set for <code>i_</code>.
-TODO add default configurations!
+      <td><p>List of language configurations, can only be set for <code>i_</code>.
 Options that can be set are:</p>
 <p><code>defaultLang</code> Default language used in Shiny app; default = "en"</p>
 <p><code>availableLangs</code> Language that can be chosen for translation in Shiny app;
-there are currently 15 available languages (see <strong>Available languages</strong>);
-defaults to all available languages</p>
+there are currently 15 <strong>Available languages</strong> (see below); defaults to
+all.</p>
 <p><code>localeDir</code> Directory to <code>yaml</code> files which contain custom keyword
 translations; default = "locale"</p>
 <p><code>fallbacks</code> List of fallback languages if translation for a word is not
-found in desired language; defaults to <strong>Default fallbacks</strong></p>
+found in desired language; defaults to <strong>Default fallbacks</strong> (see below)</p>
 <p><code>queryParameter</code> String to define query parameter if language to be set
 through URL; default = "lang"</p></td>
     </tr>
     <tr>
       <th>markdown</th>
-      <td><p>TODO; can only be set for <code>i_</code>.</p></td>
+      <td><p>Transform markdown text to HTML, can only be set for <code>i_</code>;
+default = FALSE</p></td>
     </tr>
     <tr>
       <th>keys</th>
       <td><p>If <code>str</code> is a list this is a string (or a vector of strings)
-specifying which key(s) of the list to translate; can only be set for
-<code>i_</code>.</p></td>
+specifying which key(s) of the list to translate; can only be set for <code>i_</code>.</p></td>
     </tr>
     </table>
 
@@ -249,13 +246,20 @@ translations automatically fall back onto the following languages.</p><table cla
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>i_</span>(<span class='st'>"hello"</span>, <span class='kw'>lang</span> <span class='kw'>=</span> <span class='st'>"de"</span>)</div><div class='output co'>#&gt; <span class='message'>locale directory does not exists, using default translations</span></div><div class='output co'>#&gt; [1] "Hallo"</div><div class='input'>
-<span class='fu'>i_</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"hello"</span>, <span class='st'>"world"</span>), <span class='kw'>lang</span> <span class='kw'>=</span> <span class='st'>"de"</span>)</div><div class='output co'>#&gt; <span class='message'>locale directory does not exists, using default translations</span></div><div class='output co'>#&gt; [1] "Hallo" NA     </div><div class='input'>
-<span class='fu'>i_</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"hello"</span>, <span class='kw'>translate</span> <span class='kw'>=</span> <span class='st'>"world"</span>), <span class='kw'>lang</span> <span class='kw'>=</span> <span class='st'>"es"</span>, <span class='kw'>keys</span> <span class='kw'>=</span> <span class='st'>"translate"</span>)</div><div class='output co'>#&gt; <span class='message'>locale directory does not exists, using default translations</span></div><div class='output co'>#&gt; $id
+<span class='fu'>i_</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"hello"</span>, <span class='st'>"world"</span>), <span class='kw'>lang</span> <span class='kw'>=</span> <span class='st'>"es"</span>)</div><div class='output co'>#&gt; <span class='message'>locale directory does not exists, using default translations</span></div><div class='output co'>#&gt; [1] "hola"  "mundo"</div><div class='input'>
+<span class='fu'>i_</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"hello"</span>, <span class='kw'>translate</span> <span class='kw'>=</span> <span class='st'>"world"</span>), <span class='kw'>lang</span> <span class='kw'>=</span> <span class='st'>"pt"</span>, <span class='kw'>keys</span> <span class='kw'>=</span> <span class='st'>"translate"</span>)</div><div class='output co'>#&gt; <span class='message'>locale directory does not exists, using default translations</span></div><div class='output co'>#&gt; $id
 #&gt; [1] "hello"
 #&gt; 
 #&gt; $translate
 #&gt; [1] "mundo"
-#&gt; </div></pre>
+#&gt; </div><div class='input'>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'>fluidPage</span>(
+<span class='fu'><a href='useShi18ny.html'>useShi18ny</a></span>(),
+<span class='fu'><a href='langSelectorInput.html'>langSelectorInput</a></span>(<span class='st'>"lang"</span>, <span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"fixed"</span>),
+<span class='fu'>h1</span>(<span class='fu'>ui_</span>(<span class='st'>"hello"</span>)),
+)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

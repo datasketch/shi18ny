@@ -2,12 +2,12 @@
 % Please edit documentation in R/i18n.R
 \name{useShi18ny}
 \alias{useShi18ny}
-\title{Initialise shi18ny}
+\title{Initialize shi18ny}
 \usage{
 useShi18ny()
 }
 \description{
 This function needs to be included in the UI of the Shiny app. It runs the
-required client side javascript code to update strings when currently
+required client side javascript code to update strings when the currently
 active (selected) language changes.
 }

@@ -6,6 +6,10 @@ Authors@R: c(
            family = "Marin Diaz",
            role = c("aut", "cre"),
            email = "jpmarindiaz@gmail.com"),
+    person(given = "Lena", 
+           family = "Mangold", 
+           role = "ctb",
+           email = "lena@mangold.org"),
     person("Datasketch", role = c("cph", "fnd"))
     )
 Maintainer: Juan Pablo Marin Diaz <jpmarindiaz@gmail.com>
@@ -28,4 +32,4 @@ Suggests:
     rmarkdown,
     testthat (>= 2.1.0)
 VignetteBuilder: knitr
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1

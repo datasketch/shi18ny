@@ -7,20 +7,20 @@
 langSelector(input, output, session, i18n = NULL, showSelector = TRUE)
 }
 \arguments{
-\item{i18n}{List of language configurations;
+\item{i18n}{List of language configurations; can only be set for \code{i_}.
 Options that can be set are:
 
 \code{defaultLang} Default language used in Shiny app; default = "en"
 
 \code{availableLangs} Language that can be chosen for translation in Shiny app;
-there are currently 15 available languages (see \strong{Available languages});
-defaults to all available languages
+there are currently 15 \strong{Available languages} (see below);
+defaults to all.
 
 \code{localeDir} Directory to \code{yaml} files which contain custom keyword
 translations; default = "locale"
 
 \code{fallbacks} List of fallback languages if translation for a word is not
-found in desired language; defaults to \strong{Default fallbacks}
+found in desired language; defaults to \strong{Default fallbacks} (see below)
 
 \code{queryParameter} String to define query parameter if language to be set
 through URL; default = "lang"}
@@ -34,10 +34,9 @@ String of language code of currently selected languages.
 }
 \description{
 This Shiny module gets language that's currently selected in the language
-selector. It needs to be used in the
-Server to save the currently active language in a reactive. This reactive
-can then be passed to the \code{i_} (TODO link to function documentation!)
-function to translate the text.
+selector. It needs to be used in the Server to save the currently active
+(selected) language in a reactive. This reactive can then be passed to the
+\code{\link{i_}} function to translate the text.
 }
 \section{Available languages}{
  There are currently 15 languages available for
@@ -73,3 +72,12 @@ translations automatically fall back onto the following languages.\tabular{ll}{
 }
 }
 
+\examples{
+\dontrun{
+i18n <- list(
+  defaultLang = "en",
+  availableLangs = c("en", "de")
+)
+lang <- callModule(langSelector,"lang", i18n = i18n, showSelector = TRUE)
+}
+}

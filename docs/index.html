@@ -108,6 +108,13 @@
 <p>Shiny apps internationalization: same app, multiple languages.</p>
 <p>We want to make data science more accessible and more inclusive for those people who don’t speak English as their first language. <code>shi18ny</code> enables you to translate your Shiny apps into 15 (and growing) different languages so that you can reach coders and non-coders around the world with little effort.</p>
 <p>Check the full documentation at <a href="http://shi18ny.datasketch.dev" class="uri">http://shi18ny.datasketch.dev</a></p>
+<p><img src="reference/figures/hola-mundo-shi18ny.gif"></p>
+<div id="languages" class="section level2">
+<h2 class="hasAnchor">
+<a href="#languages" class="anchor"></a>Languages</h2>
+<p>Currently, <code>shi18ny</code> supports the following 15 languages: Arabic, Catalan, Chinese, Danish, German, English, Spanish, French, Hebrew, Hindi, Italian, Portuguese, Portuguese (Brazil), Russian, and Swedish.</p>
+<p>If the language you’re looking for is not yet available, see the <code><a href="articles/contributing.html">vignette("contributing")</a></code> on how you can help us improve and extend the selection languages.</p>
+</div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -126,9 +133,9 @@
   <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"shi18ny"</span>)
 
   <span class="no">ui</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span>(
-    <span class="no">tags</span>$<span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">h1</a></span>(<span class="st">"shiny internationalization"</span>),
+    <span class="no">tags</span>$<span class="fu"><a href="https://rdrr.io/pkg/shiny/man/reexports.html">h1</a></span>(<span class="st">"shiny internationalization"</span>),
 
-    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">br</a></span>(),
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/reexports.html">br</a></span>(),
     <span class="co"># Initialize shi18ny</span>
     <span class="fu"><a href="reference/useShi18ny.html">useShi18ny</a></span>(),
 
@@ -137,7 +144,7 @@
 
     <span class="co"># UI elements</span>
     <span class="co"># Text can be translated directly from the UI, using the ui_ function:</span>
-    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">h1</a></span>(<span class="fu"><a href="reference/i18n.html">ui_</a></span>(<span class="st">"hello"</span>)),
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/reexports.html">h1</a></span>(<span class="fu"><a href="reference/i18n.html">ui_</a></span>(<span class="st">"hello"</span>)),
     <span class="co"># OR by using uiOutput:</span>
     <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/htmlOutput.html">uiOutput</a></span>(<span class="st">"results"</span>)
 
@@ -153,12 +160,17 @@
     <span class="co"># Call language module to get currently selected language and save it in a reactive</span>
     <span class="no">lang</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/callModule.html">callModule</a></span>(<span class="no">langSelector</span>, <span class="st">"lang"</span>, <span class="kw">i18n</span> <span class="kw">=</span> <span class="no">i18n</span>, <span class="kw">showSelector</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
 
+    <span class="co"># Update UI translation</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent</a></span>(<span class="fu">lang</span>(),{
+      <span class="fu"><a href="reference/uiLangUpdate.html">uiLangUpdate</a></span>(<span class="no">input</span>$<span class="no">shi18ny_ui_classes</span>, <span class="fu">lang</span>())
+      })
+
     <span class="co"># Render translations by passing the text and the active (selected) language as the lang() parameter to the i_ function</span>
     <span class="no">output</span>$<span class="no">results</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderUI.html">renderUI</a></span>({
       <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
-        <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">h1</a></span>(<span class="fu"><a href="reference/i18n.html">i_</a></span>(<span class="st">"world"</span>, <span class="fu">lang</span>())),
-        <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">br</a></span>(),
-        <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/builder.html">h4</a></span>(<span class="fu"><a href="reference/i18n.html">i_</a></span>(<span class="st">"language"</span>, <span class="fu">lang</span>()))
+        <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/reexports.html">h1</a></span>(<span class="fu"><a href="reference/i18n.html">i_</a></span>(<span class="st">"world"</span>, <span class="fu">lang</span>())),
+        <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/reexports.html">br</a></span>(),
+        <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/reexports.html">h4</a></span>(<span class="fu"><a href="reference/i18n.html">i_</a></span>(<span class="st">"language"</span>, <span class="fu">lang</span>()))
         )
       })
   }
@@ -233,6 +245,7 @@
 <li>Juan Pablo Marin Diaz <br><small class="roles"> Author, maintainer </small>  </li>
 <li>
 <a href="http://institution.com"><img src="https://www.datasketch.co/images/datasketch.svg" width="120px"></a> <br><small class="roles"> Copyright holder, funder </small>  </li>
+<li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
 

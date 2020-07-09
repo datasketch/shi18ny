@@ -39,25 +39,24 @@ langSelectorInput <- function(id,
 #' Language selector
 #'
 #' This Shiny module gets language that's currently selected in the language
-#' selector. It needs to be used in the
-#' Server to save the currently active language in a reactive. This reactive
-#' can then be passed to the `i_` (TODO link to function documentation!)
-#' function to translate the text.
+#' selector. It needs to be used in the Server to save the currently active
+#' (selected) language in a reactive. This reactive can then be passed to the
+#' \code{\link{i_}} function to translate the text.
 #'
-#' @param i18n List of language configurations;
+#' @param i18n List of language configurations; can only be set for `i_`.
 #'   Options that can be set are:
 #'
 #'   `defaultLang` Default language used in Shiny app; default = "en"
 #'
 #'   `availableLangs` Language that can be chosen for translation in Shiny app;
-#'   there are currently 15 available languages (see **Available languages**);
-#'   defaults to all available languages
+#'   there are currently 15 **Available languages** (see below);
+#'   defaults to all.
 #'
 #'   `localeDir` Directory to `yaml` files which contain custom keyword
 #'   translations; default = "locale"
 #'
 #'   `fallbacks` List of fallback languages if translation for a word is not
-#'   found in desired language; defaults to **Default fallbacks**
+#'   found in desired language; defaults to **Default fallbacks** (see below)
 #'
 #'   `queryParameter` String to define query parameter if language to be set
 #'   through URL; default = "lang"
@@ -99,6 +98,15 @@ langSelectorInput <- function(id,
 #'  | fr                 | pt                |
 #'  | de                 | nl                |
 #'  | nl                 | de                |
+#'
+#' @examples
+#' \dontrun{
+#' i18n <- list(
+#'   defaultLang = "en",
+#'   availableLangs = c("en", "de")
+#' )
+#' lang <- callModule(langSelector,"lang", i18n = i18n, showSelector = TRUE)
+#' }
 
 #' @export
 langSelector <- function(input, output, session,

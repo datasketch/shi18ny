@@ -16,30 +16,29 @@ ui_(string, lang = NULL)
 \item{lang}{Code for the language that the original language should be
 translated into.}
 
-\item{i18n}{List of language configurations; can only be set for \code{i_}.
-TODO add default configurations!
+\item{i18n}{List of language configurations, can only be set for \code{i_}.
 Options that can be set are:
 
 \code{defaultLang} Default language used in Shiny app; default = "en"
 
 \code{availableLangs} Language that can be chosen for translation in Shiny app;
-there are currently 15 available languages (see \strong{Available languages});
-defaults to all available languages
+there are currently 15 \strong{Available languages} (see below); defaults to
+all.
 
 \code{localeDir} Directory to \code{yaml} files which contain custom keyword
 translations; default = "locale"
 
 \code{fallbacks} List of fallback languages if translation for a word is not
-found in desired language; defaults to \strong{Default fallbacks}
+found in desired language; defaults to \strong{Default fallbacks} (see below)
 
 \code{queryParameter} String to define query parameter if language to be set
 through URL; default = "lang"}
 
-\item{markdown}{TODO; can only be set for \code{i_}.}
+\item{markdown}{Transform markdown text to HTML, can only be set for \code{i_};
+default = FALSE}
 
 \item{keys}{If \code{str} is a list this is a string (or a vector of strings)
-specifying which key(s) of the list to translate; can only be set for
-\code{i_}.}
+specifying which key(s) of the list to translate; can only be set for \code{i_}.}
 }
 \value{
 Translation of input text in the same format as the input.
@@ -47,9 +46,8 @@ Translation of input text in the same format as the input.
 \description{
 Translate strings, vectors or lists in the Server of a Shiny app. There are
 currently 15 languages available for translation (see \strong{Available languages}
-below).
-Note that the \code{i_} function should be used within the Server of the app and
-the \code{ui_} function should be used in the UI.
+below). Note that the \code{i_} function should be used within the Server of the
+app and the \code{ui_} function should be used in the UI.
 }
 \section{Available languages}{
  There are currently 15 languages available for
@@ -88,7 +86,15 @@ translations automatically fall back onto the following languages.\tabular{ll}{
 \examples{
 i_("hello", lang = "de")
 
-i_(c("hello", "world"), lang = "de")
+i_(c("hello", "world"), lang = "es")
 
-i_(list(id = "hello", translate = "world"), lang = "es", keys = "translate")
+i_(list(id = "hello", translate = "world"), lang = "pt", keys = "translate")
+
+\dontrun{
+ui <- fluidPage(
+useShi18ny(),
+langSelectorInput("lang", position = "fixed"),
+h1(ui_("hello")),
+)
+}
 }

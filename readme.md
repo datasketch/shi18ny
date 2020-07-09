@@ -17,6 +17,18 @@ with little effort.
 
 Check the full documentation at <http://shi18ny.datasketch.dev>
 
+![](man/figures/hola-mundo-shi18ny.gif)
+
+## Languages
+
+Currently, `shi18ny` supports the following 15 languages: Arabic,
+Catalan, Chinese, Danish, German, English, Spanish, French, Hebrew,
+Hindi, Italian, Portuguese, Portuguese (Brazil), Russian, and Swedish.
+
+If the language you’re looking for is not yet available, see the
+`vignette("contributing")` on how you can help us improve and extend the
+selection languages.
+
 ## Installation
 
 You can install the development version from
