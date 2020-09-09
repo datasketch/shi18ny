@@ -172,7 +172,7 @@ useShi18ny <- function(){
   }'
   list(
     shinyjs::useShinyjs(),
-    shinyjs::extendShinyjs(text = jscode)
+    shinyjs::extendShinyjs(text = jscode, functions = "shinyjs.init")
   )
 }
 
