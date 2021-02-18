@@ -35,7 +35,6 @@ server <-  function(input, output, session) {
 
   parmesan_lang <- reactive({
     i_(parmesan, lang(), keys = c("label", "choices"))
-    # parmesan
   })
 
   output_parmesan("all_controls_here", parmesan = parmesan_lang,
@@ -49,7 +48,6 @@ server <-  function(input, output, session) {
   output$debug <- renderPrint({
     paste0(
       "Parmesan updated: ", input$parmesan_updated
-      # str(parmesan_input())
     )
   })
 
