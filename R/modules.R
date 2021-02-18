@@ -143,7 +143,6 @@ langSelector <- function(input, output, session,
   # })
 #
 #   observe({
-#     # browser()
 #     updateSelectLangInput(session, 'langInner',
 #                           langs = config$availableLangs,
 #                           selected = queryLang() %||% config$defaultLang)
