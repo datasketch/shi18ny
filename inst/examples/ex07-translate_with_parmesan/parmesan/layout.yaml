@@ -1,0 +1,13 @@
+controls:
+  label: controls
+  inputs:
+    - dataset
+    - plot_type
+    - bins
+controls_dark:
+  label: controls_dark
+  inputs:
+    - column
+controls_empty:
+  label: controls_empty
+  inputs:
