@@ -1,0 +1,9 @@
+hello: "Hello Parmesan!"
+controls: Controls
+controls_dark: Controls Dark
+plot_type: Chart type
+plot: Plot
+histogram: Histogram
+bins: Bins
+dataset: Dataset
+column: Column

@@ -1,0 +1,41 @@
+plot_type:
+  show: true
+  input_type: radioButtons
+  input_params:
+    label: plot_type
+    choices:
+      - plot
+      - histogram
+bins:
+  show: true
+  show_if: 
+    plot_type:
+      contains: Histo # Mathces EN and ES
+  input_type: sliderInput
+  input_params:
+    label: bins
+    min: 0
+    max: 50
+    value: 10
+    step: 1
+  update_param: value
+dataset:
+  show: true
+  input_type: selectInput
+  input_params:
+    label: dataset
+    choices:
+      - rock
+      - pressure
+      - cars
+    selected: rock
+  update_param: selected
+column:
+  show: true
+  input_type: numericInput
+  input_params:
+    label: datasetNColsLabel()
+    min: 1
+    max: datasetNCols()
+    value: 1
+  update_param: value
