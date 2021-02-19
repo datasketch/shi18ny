@@ -143,7 +143,7 @@ langSelector <- function(input, output, session,
     message("initLocale: ", initLocale())
     message("input3 ", queryLang(), " is null ",is.null(queryLang()))
 
-    queryLang()
+    queryLang() %||% config$defaultLang
   })
   currentLocale
 }
