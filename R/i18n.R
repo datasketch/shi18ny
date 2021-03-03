@@ -80,7 +80,6 @@
 #' ui <- fluidPage(
 #' useShi18ny(),
 #' langSelectorInput("lang", position = "fixed"),
-#' h1(ui_("hello")),
 #' )
 #' }
 
@@ -200,12 +199,12 @@ useShi18ny <- function(){
 #' }
 
 #' @export
-uiLangUpdate <- function(classes, lang){
+uiLangUpdate <- function(classes, lang, i18n = NULL){
   if(is.null(classes)) return()
   classes <- gsub("i18n ", "", classes)
   lapply(classes, function(cls){
     str(cls)
-    shinyjs::html(html = i_(gsub("-",".",cls), lang), selector = paste0(".", cls))
+    shinyjs::html(html = i_(gsub("-",".",cls), lang = lang, i18n = i18n), selector = paste0(".", cls))
   })
 }
 
