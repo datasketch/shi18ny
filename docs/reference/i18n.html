@@ -92,7 +92,7 @@ app and the ui_ function should be used in the UI." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">shi18ny</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
       </span>
     </div>
 
@@ -100,7 +100,7 @@ app and the ui_ function should be used in the UI." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -132,7 +132,7 @@ app and the ui_ function should be used in the UI." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/datasketch/shi18ny/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -161,9 +161,9 @@ below). Note that the <code>i_</code> function should be used within the Server 
 app and the <code>ui_</code> function should be used in the UI.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>i_</span>(<span class='no'>str</span>, <span class='kw'>lang</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>i18n</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>markdown</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>keys</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"name"</span>, <span class='st'>"label"</span>))
+    <pre class="usage"><span class='fu'>i_</span><span class='op'>(</span><span class='va'>str</span>, lang <span class='op'>=</span> <span class='cn'>NULL</span>, i18n <span class='op'>=</span> <span class='cn'>NULL</span>, markdown <span class='op'>=</span> <span class='cn'>FALSE</span>, keys <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"name"</span>, <span class='st'>"label"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='fu'>ui_</span>(<span class='no'>string</span>, <span class='kw'>lang</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>ui_</span><span class='op'>(</span><span class='va'>string</span>, lang <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -245,21 +245,24 @@ translations automatically fall back onto the following languages.</p><table cla
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>i_</span>(<span class='st'>"hello"</span>, <span class='kw'>lang</span> <span class='kw'>=</span> <span class='st'>"de"</span>)</div><div class='output co'>#&gt; <span class='message'>locale directory does not exists, using default translations</span></div><div class='output co'>#&gt; [1] "Hallo"</div><div class='input'>
-<span class='fu'>i_</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"hello"</span>, <span class='st'>"world"</span>), <span class='kw'>lang</span> <span class='kw'>=</span> <span class='st'>"es"</span>)</div><div class='output co'>#&gt; <span class='message'>locale directory does not exists, using default translations</span></div><div class='output co'>#&gt; [1] "hola"  "mundo"</div><div class='input'>
-<span class='fu'>i_</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"hello"</span>, <span class='kw'>translate</span> <span class='kw'>=</span> <span class='st'>"world"</span>), <span class='kw'>lang</span> <span class='kw'>=</span> <span class='st'>"pt"</span>, <span class='kw'>keys</span> <span class='kw'>=</span> <span class='st'>"translate"</span>)</div><div class='output co'>#&gt; <span class='message'>locale directory does not exists, using default translations</span></div><div class='output co'>#&gt; $id
+    <pre class="examples"><div class='input'><span class='fu'>i_</span><span class='op'>(</span><span class='st'>"hello"</span>, lang <span class='op'>=</span> <span class='st'>"de"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>locale directory does not exists, using default translations</span></div><div class='output co'>#&gt; [1] "Hallo"</div><div class='input'>
+<span class='fu'>i_</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"hello"</span>, <span class='st'>"world"</span><span class='op'>)</span>, lang <span class='op'>=</span> <span class='st'>"es"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>locale directory does not exists, using default translations</span></div><div class='output co'>#&gt; [1] "hola"  "mundo"</div><div class='input'>
+<span class='fu'>i_</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"hello"</span>, translate <span class='op'>=</span> <span class='st'>"world"</span><span class='op'>)</span>, lang <span class='op'>=</span> <span class='st'>"pt"</span>, keys <span class='op'>=</span> <span class='st'>"translate"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>locale directory does not exists, using default translations</span></div><div class='output co'>#&gt; $id
 #&gt; [1] "hello"
 #&gt; 
 #&gt; $translate
 #&gt; [1] "mundo"
 #&gt; </div><div class='input'>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'>fluidPage</span>(
-<span class='fu'><a href='useShi18ny.html'>useShi18ny</a></span>(),
-<span class='fu'><a href='langSelectorInput.html'>langSelectorInput</a></span>(<span class='st'>"lang"</span>, <span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"fixed"</span>),
-<span class='fu'>h1</span>(<span class='fu'>ui_</span>(<span class='st'>"hello"</span>)),
-)
-}</div></pre>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>ui</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/fluidPage.html'>fluidPage</a></span><span class='op'>(</span>
+<span class='fu'><a href='useShi18ny.html'>useShi18ny</a></span><span class='op'>(</span><span class='op'>)</span>,
+<span class='fu'><a href='langSelectorInput.html'>langSelectorInput</a></span><span class='op'>(</span><span class='st'>"lang"</span>, position <span class='op'>=</span> <span class='st'>"fixed"</span><span class='op'>)</span>,
+<span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -275,7 +278,7 @@ translations automatically fall back onto the following languages.</p><table cla
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

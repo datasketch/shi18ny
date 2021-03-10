@@ -94,7 +94,6 @@ i_(list(id = "hello", translate = "world"), lang = "pt", keys = "translate")
 ui <- fluidPage(
 useShi18ny(),
 langSelectorInput("lang", position = "fixed"),
-h1(ui_("hello")),
 )
 }
 }

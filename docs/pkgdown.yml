@@ -1,11 +1,11 @@
-pandoc: 2.7.3
-pkgdown: 1.5.1
+pandoc: 2.7.2
+pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   contributing: contributing.html
   getting-started: getting-started.html
   pull-request-guidelines: pull-request-guidelines.html
-last_built: 2020-07-09T21:30Z
+last_built: 2021-03-10T17:38Z
 urls:
   reference: https://shi18ny.datasketch.dev/reference
   article: https://shi18ny.datasketch.dev/articles
