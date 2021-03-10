@@ -4,7 +4,7 @@
 \alias{uiLangUpdate}
 \title{Update language in UI translations}
 \usage{
-uiLangUpdate(classes, lang)
+uiLangUpdate(classes, lang, i18n = NULL)
 }
 \arguments{
 \item{classes}{UI classes; pass \code{input$shi18ny_ui_classes} to refer to all
