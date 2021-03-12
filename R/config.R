@@ -6,21 +6,70 @@ i18nLoad <- function(opts = NULL){
   availableSystemLangs <- shi18ny:::available_langs
   available_lang_codes <- availableSystemLangs[[1]]
   localeDir <- config$localeDir
+  customTranslationSource <- config$customTranslationSource
+
   if(!dir.exists(localeDir)){
+
     # message("No custom translations defined")
     customAvailableLangs <- NULL
     customLocale <- NULL
-  }else{
-    customAvailableLangs <- gsub(".yaml","",list.files(localeDir,pattern = ".yaml"))
-    if(!is.null(config$availableLangs)){
-      if(!all(customAvailableLangs %in% config$availableLangs))
-        stop("Requested languages not in locale folder")
+
+  } else {
+
+    files <- list.files(localeDir)
+    fileExtensions <- unique(sub('.*\\.', '', files))
+
+    if(customTranslationSource == "yaml"){
+
+      customAvailableLangs <- gsub(".yaml","",list.files(localeDir,pattern = ".yaml"))
+
+      if(length(customAvailableLangs) == 0)
+        message("No yaml files in locale folder.")
+
+      if(!is.null(config$availableLangs)){
+        if(!all(customAvailableLangs %in% config$availableLangs))
+          stop("Requested languages not in locale folder")
+      }
+      customLocale <- lapply(customAvailableLangs,function(lang){
+        dir <- file.path(localeDir,paste0(lang,".yaml"))
+        l <- yaml::yaml.load_file(dir)
+      })
+      names(customLocale) <- customAvailableLangs
+
+    } else if (customTranslationSource == "csv"){
+
+      if(!"translations.csv" %in% files)
+        stop("Need translations.csv file in locale folder.")
+
+      message("Using translations from csv.")
+      dir <- file.path(localeDir,"translations.csv")
+      all_translations <- readr::read_csv(dir)
+
+      data_columns <- names(all_translations)
+
+      if(!"id" %in% data_columns)
+        stop("Need id column for translations.")
+
+      customAvailableLangs <- data_columns[!data_columns == "id"]
+
+      if(!is.null(config$availableLangs)){
+        if(!all(customAvailableLangs %in% config$availableLangs))
+          stop("Requested languages not in translations.csv file.")
+      }
+
+      language_columns <- all_translations %>%
+        dplyr::select(all_of(customAvailableLangs))
+
+      translation_ids <- all_translations$id
+
+      customLocale <- language_columns %>%
+        purrr::map(~as.list(.x) %>%
+                     setNames(translation_ids))
+
+    } else {
+      stop("CustomTranslationSource needs to be one of 'yaml' or 'csv'.")
     }
-    customLocale <- lapply(customAvailableLangs,function(lang){
-      dir <- file.path(localeDir,paste0(lang,".yaml"))
-      l <- yaml::yaml.load_file(dir)
-    })
-    names(customLocale) <- customAvailableLangs
+
   }
 
   # shi18ny <- read.csv(system.file("ui-translations.csv", package = "shi18ny"),
@@ -60,7 +109,8 @@ i18nConfig <- function(opts = NULL){
     availableLangs = shi18ny:::available_langs$lang,
     localeDir = "locale",
     fallbacks = shi18ny:::default_fallbacks,
-    queryParameter = "lang"
+    queryParameter = "lang",
+    customTranslationSource = "yaml"
   )
   config <- defaultOpts
   if(!is.null(opts))
