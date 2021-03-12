@@ -25,7 +25,9 @@ Depends:
 Imports:
     shiny,
     shinyjs,
-    yaml
+    yaml,
+    dplyr,
+    purrr
 Encoding: UTF-8
 Suggests: 
     knitr,
