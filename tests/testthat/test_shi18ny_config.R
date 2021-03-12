@@ -23,7 +23,6 @@ test_that("i18n Config",{
   l <- i18nLoad()$en
   localeString <- "common.language"
   strs <- strsplit(localeString,".",fixed = TRUE)[[1]]
-  # expect_equal(selectInList(l,strs), c("common", "language"))
 
 
   localeDir <- system.file("tests", "testthat", "locale_test", package = "shi18ny")
@@ -42,13 +41,45 @@ test_that("i18n Config",{
   config <- i18nConfig(opts)
   expect_error(i18nLoad(opts),"Requested languages not in locale folder")
 
-  # TODO need to add more tests here
-  # i18n <- list(
-  #   defaultLang = "en",
-  #   availableLangs = c("es","en")
-  # )
-  # i18n <- i18nLoad(i18n)
-  # config <- i18n$.config
+  # test config works for csv translations
+  opts <- list(
+    localeDir = localeDir,
+    availableLangs = c("en","es"),
+    customTranslationSource = "csv"
+  )
+  config <- i18nConfig(opts)
+  i18n <- i18nLoad(opts)
+  expect_true(all(opts$availableLans %in% names(i18n)))
+
+  # test error when languages unavailable in "translations.csv"
+  opts <- list(
+    localeDir = localeDir,
+    availableLangs = c("en","pt"),
+    customTranslationSource = "csv"
+  )
+  config <- i18nConfig(opts)
+  expect_error(i18nLoad(opts), "Requested languages not in translations.csv file.")
+
+  # test error when customTranslationSource = "csv" but no file "translations.csv" in locale folder
+  localeDir <- system.file("tests", "testthat", "locale", package = "shi18ny")
+  opts <- list(
+    localeDir = localeDir,
+    availableLangs = c("en","es"),
+    customTranslationSource = "csv"
+  )
+  config <- i18nConfig(opts)
+  expect_error(i18nLoad(opts), "Need translations.csv file in locale folder.")
+
+  # test error when "translations.csv" has no id column
+  localeDir <- system.file("tests", "testthat", "locale_csv", package = "shi18ny")
+  opts <- list(
+    localeDir = localeDir,
+    availableLangs = c("en","es"),
+    customTranslationSource = "csv"
+  )
+  config <- i18nConfig(opts)
+  expect_error(i18nLoad(opts), "Need id column for translations.")
+
 
 
 })
