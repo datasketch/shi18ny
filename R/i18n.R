@@ -19,14 +19,19 @@
 #'   there are currently 15 **Available languages** (see below); defaults to
 #'   all.
 #'
-#'   `localeDir` Directory to `yaml` files which contain custom keyword
-#'   translations; default = "locale"
+#'   `localeDir` Directory to `yaml` or `csv` file(s) which contain custom
+#'   keyword translations; default = "locale"
 #'
 #'   `fallbacks` List of fallback languages if translation for a word is not
 #'   found in desired language; defaults to **Default fallbacks** (see below)
 #'
 #'   `queryParameter` String to define query parameter if language to be set
 #'   through URL; default = "lang"
+#'
+#'   `customTranslationSource` String to change the type of source for custom
+#'   translations. Options: "yaml" and "csv"; default = "yaml". If "csv"
+#'   there needs to be a "translations.csv" in the `localeDir` with an "id"
+#'   column and columns for languages (e.g. "en", "es", ...)
 #'
 #' @param markdown Transform markdown text to HTML, can only be set for `i_`;
 #'   default = FALSE
