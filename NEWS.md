@@ -1,3 +1,13 @@
+# shi18ny 1.1.1
+
+Bug fixes
+* Adding missing namespaces
+
+# shi18ny 1.1.0
+
+Enhancements
+* Translations can now be done from csv files in the locale folder.
+
 # shi18ny 1.0.0
 
 Enhancements
