@@ -1,6 +1,6 @@
 Package: shi18ny
 Title: Tools for shiny apps internationalization
-Version: 1.0.0
+Version: 1.1.0
 Authors@R: c( 
     person(given = "Juan Pablo",
            family = "Marin Diaz",
