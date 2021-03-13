@@ -185,12 +185,16 @@ Options that can be set are:</p>
 <p><code>availableLangs</code> Language that can be chosen for translation in Shiny app;
 there are currently 15 <strong>Available languages</strong> (see below); defaults to
 all.</p>
-<p><code>localeDir</code> Directory to <code>yaml</code> files which contain custom keyword
-translations; default = "locale"</p>
+<p><code>localeDir</code> Directory to <code>yaml</code> or <code>csv</code> file(s) which contain custom
+keyword translations; default = "locale"</p>
 <p><code>fallbacks</code> List of fallback languages if translation for a word is not
 found in desired language; defaults to <strong>Default fallbacks</strong> (see below)</p>
 <p><code>queryParameter</code> String to define query parameter if language to be set
-through URL; default = "lang"</p></td>
+through URL; default = "lang"</p>
+<p><code>customTranslationSource</code> String to change the type of source for custom
+translations. Options: "yaml" and "csv"; default = "yaml". If "csv"
+there needs to be a "translations.csv" in the <code>localeDir</code> with an "id"
+column and columns for languages (e.g. "en", "es", ...)</p></td>
     </tr>
     <tr>
       <th>markdown</th>

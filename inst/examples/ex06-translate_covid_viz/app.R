@@ -5,7 +5,8 @@ library(leaflet)
 library(shi18ny)
 library(lfltmagic)
 
-load_data <- read.csv("tidy-csse-langs.csv")
+data_dir <- system.file("examples", "ex06-translate_covid_viz","tidy-csse-langs.csv", package = "shi18ny")
+load_data <- readr::read_csv(data_dir)
 
 max_date <- max(load_data$date)
 
@@ -32,24 +33,27 @@ ui <- fluidPage(
 
 server <- function(input, output) {
 
-  i18n <- list(
+  opts <- list(
     defaultLang = "en",
-    availableLangs = c("de","en","es")
+    availableLangs = c("de","en","es"),
+    customTranslationSource = "csv"
   )
 
-  lang <- callModule(langSelector,"lang", i18n = i18n, showSelector = TRUE)
+  i18n <- i18nLoad(opts)
+
+  lang <- callModule(langSelector,"lang", i18n = opts, showSelector = TRUE)
 
   observeEvent(lang(),{
-    uiLangUpdate(input$shi18ny_ui_classes, lang())
+    shinyjs::delay(500, uiLangUpdate(input$shi18ny_ui_classes, lang = lang(), i18n = i18n))
   })
 
   output$world_map <- renderLeaflet({
 
     # translate labels
-    country <- i_("country", lang())
-    cases <- i_("cases", lang())
-    title <- i_("title", lang())
-    subtitle <- i_("subtitle", lang())
+    country <- i_("country", lang = lang(), i18n = i18n)
+    cases <- i_("cases", lang = lang(), i18n = i18n)
+    title <- i_("title", lang = lang(), i18n = i18n)
+    subtitle <- i_("subtitle", lang = lang(), i18n = i18n)
 
     lflt_choropleth_Gcd(data,
                         map_tiles = "CartoDB",
@@ -64,7 +68,7 @@ server <- function(input, output) {
     })
 
   output$datestamp <- renderUI({
-    h6(paste0(i_("status",lang()), ": ", max_date))
+    h6(paste0(i_("status", lang = lang(), i18n = i18n), ": ", max_date))
     })
 
 }

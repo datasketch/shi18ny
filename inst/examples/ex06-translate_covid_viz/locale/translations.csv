@@ -1,0 +1,8 @@
+id,en,es,de
+title,COVID-19 mapper,Mapeador COVID-19,COVID-19-Mapper
+subtitle,Confirmed cases<br>of COVID-19<br>in absolute numbers,Casos confirmados<br>de COVID-19<br>en nï¿½ï¿½meros abso,Bestï¿½ï¿½tigte Fï¿½ï¿½lle<br>von COVID-19<br>in absolu
+annotate,Data from the Corona Center for Systems Science and Engineering (CSSE) at Johns Hopkins University (JHU),Datos del Corona Center for Systems Science and Engineering (CSSE) de la Universidad Johns Hopkins (JHU),Daten vom Corona Center for Systems Science and Engineering (CSSE) an der Johns Hopkins Universitï¿½ï¿½t 
+status,Dated,A partir del,Stand
+internationalize,Internationalize your Shiny maps with shi18ny,Internacionaliza tus mapas Shiny con shi18ny,Internationalisiere deine Shiny-Weltkarte mit shi18ny
+country,Country,Paï¿,Land
+cases,Confirmed cases,Casos confirmados,Bestï¿½ï¿½tigte 

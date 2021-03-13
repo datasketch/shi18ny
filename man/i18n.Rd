@@ -25,14 +25,19 @@ Options that can be set are:
 there are currently 15 \strong{Available languages} (see below); defaults to
 all.
 
-\code{localeDir} Directory to \code{yaml} files which contain custom keyword
-translations; default = "locale"
+\code{localeDir} Directory to \code{yaml} or \code{csv} file(s) which contain custom
+keyword translations; default = "locale"
 
 \code{fallbacks} List of fallback languages if translation for a word is not
 found in desired language; defaults to \strong{Default fallbacks} (see below)
 
 \code{queryParameter} String to define query parameter if language to be set
-through URL; default = "lang"}
+through URL; default = "lang"
+
+\code{customTranslationSource} String to change the type of source for custom
+translations. Options: "yaml" and "csv"; default = "yaml". If "csv"
+there needs to be a "translations.csv" in the \code{localeDir} with an "id"
+column and columns for languages (e.g. "en", "es", ...)}
 
 \item{markdown}{Transform markdown text to HTML, can only be set for \code{i_};
 default = FALSE}
