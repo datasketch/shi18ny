@@ -43,7 +43,7 @@ i18nLoad <- function(opts = NULL){
 
       message("Using translations from csv.")
       dir <- file.path(localeDir,"translations.csv")
-      all_translations <- readr::read_csv(dir, col_types = cols())
+      all_translations <- readr::read_csv(dir, col_types = readr::cols())
 
       data_columns <- names(all_translations)
 
@@ -58,13 +58,13 @@ i18nLoad <- function(opts = NULL){
       }
 
       language_columns <- all_translations %>%
-        dplyr::select(all_of(customAvailableLangs))
+        dplyr::select(dplyr::all_of(customAvailableLangs))
 
       translation_ids <- all_translations$id
 
       customLocale <- language_columns %>%
         purrr::map(~as.list(.x) %>%
-                     setNames(translation_ids))
+                     stats::setNames(translation_ids))
 
     } else {
       stop("CustomTranslationSource needs to be one of 'yaml' or 'csv'.")
