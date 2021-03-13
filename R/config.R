@@ -43,7 +43,7 @@ i18nLoad <- function(opts = NULL){
 
       message("Using translations from csv.")
       dir <- file.path(localeDir,"translations.csv")
-      all_translations <- readr::read_csv(dir)
+      all_translations <- readr::read_csv(dir, col_types = cols())
 
       data_columns <- names(all_translations)
 
