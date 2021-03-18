@@ -41,7 +41,7 @@ i18nLoad <- function(opts = NULL){
       if(!"translations.csv" %in% files)
         stop("Need translations.csv file in locale folder.")
 
-      message("Using translations from csv.")
+      # message("Using translations from csv.")
       dir <- file.path(localeDir,"translations.csv")
       all_translations <- readr::read_csv(dir, col_types = readr::cols())
 
