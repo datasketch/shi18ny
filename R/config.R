@@ -1,5 +1,5 @@
 
-
+#' @importFrom dplyr %>%
 #' @export
 i18nLoad <- function(opts = NULL){
   config <- i18nConfig(opts)
